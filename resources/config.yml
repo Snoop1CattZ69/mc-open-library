@@ -1,0 +1,48 @@
+######################################################
+# OUR DISCORD CHANNEL: HTTPS://DISCORD.GG/s9aqQSMqRy #
+######################################################
+
+enable-console-colors: true
+health-bar:
+  fix-to-one-line: false
+  health-per-bar: 20
+
+# Multithreading is new feature which enabled by default
+# you must specify the amount of threads for ejCore
+# all threads is used by other ejPlugins.
+# best amount of threads = (cpu_threads / 2)
+multithreading:
+  threads: 2
+
+debug:
+  enable-debug: true
+  less-console-messages: false
+  console-feedback: true
+
+# Time in seconds (default 8 hours)
+check-period: 28800
+check-updates: true
+
+# if true, decreases damage when player attacks before attack delay get fully restored
+# Otherwise damage will be static every-time
+enable-attack-cooldown: true
+
+# #emove brackets before adjusting this option
+player-data-default: []
+#- 'some.key:value'
+
+external-libs:
+  ejcore-bots: false
+  ejcore-webserver: false
+  ejcore-database: false
+
+# Database properties
+database:
+  db-type: sqlite
+  mysql:
+    username: root
+    password: toor
+
+modules:
+  enable-by-default: true
+  player-attributes-enabled: false

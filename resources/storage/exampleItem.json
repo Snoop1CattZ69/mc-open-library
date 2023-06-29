@@ -1,0 +1,44 @@
+{
+  "id": "exampleItem",
+  "copy-from": "_someGeneralType",
+  "material": "IRON_SWORD",
+  "is-unbreakable": true,
+  "repairable": false,
+  "model": 0,
+  "level": 5,
+  "default-rarity": "Common",
+  "random-rarity": {
+    "uncommon": { "chance": 25.0, "model": 1 },
+    "rare": { "chance": 7.0, "model": 2 },
+    "epic": { "chance": 1.0, "model": 3 }
+  },
+  "type": "ONE_HANDED",
+  "max-durability": 200,
+  "display": {
+    "name": "Some Example Item",
+    "lore": [
+      "Lore line 1",
+      "Lore line 2",
+      "Lore line 3"
+    ],
+    "description": [
+      "Description line 1",
+      "Description line 2",
+      "Description line 3"
+    ]
+  },  
+  "item-flags": [
+    "HIDE_UNBREAKABLE",
+    "HIDE_ATTRIBUTES"
+  ],
+  "attributes": {
+    "physical_damage": "15.0-20.0",
+    "critical_chance": "+7.0",
+    "max_health": "-5%",
+    "dodge": "+5"
+  },
+  "random-attributes": {
+    "physical_damage": "from +5% to +10% per level 2.5",
+    "critical_chance": "chance 65% from -15% to +15% per level 1.5"
+  }
+}

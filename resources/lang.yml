@@ -1,0 +1,12 @@
+###############################
+#en_US Language Messages
+###############################
+
+err:
+  console-error: '&4Join to server for using this command.'
+  no-permission: '&4You don''t have permission to do this.'
+  arg-null: '&4Args can''t be null'
+  player-online: '&4Offline player can''t be used in commands'
+util:
+  durability: '&7Durability'
+  durability-suffix-color-decorator: '&7'

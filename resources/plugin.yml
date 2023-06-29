@@ -1,0 +1,17 @@
+name: ${project.name}
+version: ${project.version}-${releaseStatus}
+description: ''
+author: Snoop1CattZ69
+authors: [Snoop1CattZ69, ASL std.]
+website:  https://discord.aslstd.org/
+
+api-version: 1.16
+
+main: org.aslstd.core.OpenLib
+depend: []
+softdepend: [ProtocolLib, PlaceholderAPI, LuckPerms, Vault]
+
+folia-supported: true
+
+libraries:
+- com.zaxxer:HikariCP:4.0.3

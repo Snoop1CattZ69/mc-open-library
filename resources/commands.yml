@@ -1,0 +1,28 @@
+command-label: mol
+command-aliases: 'molib, openlib, openlibrary'
+
+help:
+  command-name: help
+  description: Show all available commands
+  permission: mol.command.help
+  usage-args: ''
+  sender-type: ALL
+dump:
+  command-name: dump
+  description: Dumps all stored player settings into 'yml' file which is located in
+    the plugin root folder
+  permission: mol.command.dump
+  usage-args: ''
+  sender-type: ALL
+reload:
+  command-name: reload
+  description: Reloads MC-OpenLibrary and all connected OpenPlugins
+  permission: mol.command.reload
+  usage-args: ''
+  sender-type: ALL
+data:
+  command-name: data
+  description: Set the custom data to file/player for future using in placeholders
+  permission: mol.command.data
+  usage-args: '<custom/player> <file/name/uid> <key> <value>'
+  sender-type: ALL
