@@ -41,6 +41,7 @@ public class CommandHandler implements Handler {
 
 	@Getter protected Yaml conf;
 	@Getter private String label;
+	@Getter private String defLabel;
 	protected JavaPlugin plugin;
 	@Getter protected String[] aliases;
 
@@ -51,13 +52,14 @@ public class CommandHandler implements Handler {
 	 * @param label a {@link String} object
 	 */
 	public CommandHandler(JavaPlugin plugin, String label) {
+		this.defLabel = label;
 		this.plugin = plugin;
 		conf = Yaml.of("commands.yml", plugin);
-		final String temp = conf.getString("command-aliases");
+		final String temp = conf.getString(defLabel + ".command-aliases");
 		if (temp != null) {
 			aliases = temp.replaceAll("\\s+", "").split(",");
 		}
-		this.label = conf.getString("command-label", label, true);
+		this.label = conf.getString(defLabel + ".command-label", label, true);
 	}
 
 	/** {@inheritDoc} */

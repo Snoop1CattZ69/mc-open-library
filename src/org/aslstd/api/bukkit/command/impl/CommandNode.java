@@ -42,11 +42,12 @@ public class CommandNode implements OCommand {
 	 */
 	public CommandNode(CommandHandler handler, String label, int minArgs, Executor func) {
 		defLabel = label;
-		this.label = handler.conf.getString(label + ".command-name", label, true);
-		this.description = handler.conf.getString(label + ".description", description() == null ? label + " command description" : description(), true);
-		this.permission = handler.conf.getString(label + ".permission", permission() == null ? handler.plugin.getName().toLowerCase() + ".command." + label : permission(), true);
-		this.arguments = handler.conf.getString(label + ".usage-args", "", true);
-		this.senderType = SenderType.of(handler.conf.getString(label + ".sender-type", "ALL", true));
+		final String section = handler.defLabel() + ".subcommands.";
+		this.label = handler.conf.getString(section + "command-name", label, true);
+		this.description = handler.conf.getString(section + "description", description() == null ? label + " command description" : description(), true);
+		this.permission = handler.conf.getString(section + "permission", permission() == null ? handler.plugin.getName().toLowerCase() + ".command." + label : permission(), true);
+		this.arguments = handler.conf.getString(section + "usage-args", "", true);
+		this.senderType = SenderType.of(handler.conf.getString(section + "sender-type", "ALL", true));
 		this.func = func;
 		this.handler = handler;
 		this.minArgs = minArgs;
