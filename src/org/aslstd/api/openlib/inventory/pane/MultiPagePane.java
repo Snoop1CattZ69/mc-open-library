@@ -23,8 +23,10 @@ import net.kyori.adventure.text.Component;
 /**
  * <p>MultiPagePane class.</p>
  *
+ * @deprecated Will be removed after new inventory framework will be completed
  * @author Snoop1CattZ69
  */
+@Deprecated(since = "1.0.1", forRemoval = true)
 public class MultiPagePane implements Pane {
 	/* Обычнай заглушка */
 	/** {@inheritDoc} */

@@ -28,6 +28,11 @@ import de.tr7zw.changeme.nbtapi.NBTItem;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
 
+/**
+ * @deprecated Will be removed after new inventory framework will be completed
+ * @author Snoop1CattZ69
+ */
+@Deprecated(since = "1.0.1", forRemoval = true)
 public class MultiPageChestStorage implements Chest {
 
 	public static final ItemStack EMPTY = new ItemStack(Material.AIR, 1);

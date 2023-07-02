@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import org.aslstd.api.openlib.collection.CompletableSet;
 import org.aslstd.core.OpenLib;
 
 public class ThreadWorker {
