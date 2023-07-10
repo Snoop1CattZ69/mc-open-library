@@ -47,12 +47,15 @@ public class CoreCommandHandler extends CommandHandler {
 
 		attachNode(new CommandNode(this, "help", 0, (s, args) -> {
 			Texts.send(s, "&c»------>&5[&6Minecraft Open Plugin Library&5&l]");
+
 			final List<OCommand> commands = new ArrayList<>(getRegisteredCommands());
 			commands.add(defaultCommand());
+
 			for (final OCommand command : commands)
 				if (command.testConditions(s))
 					Texts.send(s, "&6" + command.usage() + " - &2" + command.description()
 					+ (s.isOp() || s.hasPermission("*") ? " &f- &5" + command.permission() : ""));
+
 			Texts.send(s, "&c»------>&5[&6Minecraft Open Plugin Library&5&l]");
 			return null;
 		}))

@@ -18,15 +18,15 @@ import me.clip.placeholderapi.PlaceholderAPI;
 public class DataExpansion extends Placeholders {
 
 	public DataExpansion() {
-		super(OpenLib.instance(), "ejcdata");
+		super(OpenLib.instance(), "moldata");
 	}
 
 	@Override
 	public @NotNull List<String> getPlaceholders() {
 		return Arrays.asList(
-				"ejcdata_<key>",
-				"ejcdata_player_<player-name/uid>_<key>",
-				"ejcdata_custom_<file-name>_<key>"
+				"moldata_<key>",
+				"moldata_player_<player-name/uid>_<key>",
+				"moldata_custom_<file-name>_<key>"
 				);
 	}
 

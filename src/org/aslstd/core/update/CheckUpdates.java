@@ -21,11 +21,11 @@ import org.bukkit.util.Consumer;
 @SuppressWarnings("deprecation")
 public class CheckUpdates {
 
-	private static List<OpenPlugin> registeredEJPlugins = new ArrayList<>();
+	private static List<OpenPlugin> openPlugins = new ArrayList<>();
 
 	public static void checkUpdates() {
 
-		for (final OpenPlugin plugin : registeredEJPlugins) {
+		for (final OpenPlugin plugin : openPlugins) {
 
 			getVersion(version -> {
 
@@ -47,7 +47,7 @@ public class CheckUpdates {
 		if (p instanceof Player)
 			Texts.send(p, "&c»------>&5 OpenLibrary Update Checker");
 
-		for (final OpenPlugin plugin : registeredEJPlugins) {
+		for (final OpenPlugin plugin : openPlugins) {
 
 			final boolean isUpToDate = plugin.getBuild() >= plugin.getLatestBuild();
 
@@ -90,7 +90,7 @@ public class CheckUpdates {
 		if (ejp.getResourceId() == -1)
 			return;
 
-		registeredEJPlugins.add(ejp);
+		openPlugins.add(ejp);
 
 	}
 

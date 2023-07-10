@@ -172,7 +172,6 @@
 			<groupId>com.elmakers.mine.bukkit</groupId>
 			<artifactId>EffectLib</artifactId>
 			<version>10.2-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- Compile Project: BStats -->
@@ -287,8 +286,8 @@
 
 		<!-- EffectLib Repo -->
 		<repository>
-			<id>elMakers</id>
-			<url>https://maven.elmakers.com/repository/</url>
+			<id>grandwork</id>
+			<url>https://repo.zoommax.ru/repository/grandwork/</url>
 		</repository>
 
 		<repository>
