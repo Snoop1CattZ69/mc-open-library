@@ -24,9 +24,15 @@ jobs:
         server-password: GW_PASSWORD
 
     - name: Build & Publish
-      run: mvn --batch-mode deploy --file pom.xml
+      run: mvn --batch-mode install --file pom.xml
       env:
         GW_USERNAME: ${{ secrets.SRV_USERNAME }}
         GW_PASSWORD: ${{ secrets.SRV_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        
+    - name: Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: mc-open-lib
+        path: test-server/plugins/*.jar
 
