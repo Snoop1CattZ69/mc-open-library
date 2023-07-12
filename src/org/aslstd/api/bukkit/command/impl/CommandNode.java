@@ -42,7 +42,7 @@ public class CommandNode implements OCommand {
 	 */
 	public CommandNode(CommandHandler handler, String label, int minArgs, Executor func) {
 		defLabel = label;
-		final String section = handler.defLabel() + ".subcommands.";
+		final String section = handler.defLabel() + ".subcommands." + label + ".";
 		this.label = handler.conf.getString(section + "command-name", label, true);
 		this.description = handler.conf.getString(section + "description", description() == null ? label + " command description" : description(), true);
 		this.permission = handler.conf.getString(section + "permission", permission() == null ? handler.plugin.getName().toLowerCase() + ".command." + label : permission(), true);

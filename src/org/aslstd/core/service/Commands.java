@@ -22,7 +22,8 @@ public class Commands {
 			final PluginCommand cmd = constr.newInstance(command.label().toLowerCase(), plugin);
 			cmd.setExecutor(command);
 			cmd.setTabCompleter(command);
-			cmd.setAliases(Arrays.asList(command.aliases()));
+			if (command.aliases() != null)
+				cmd.setAliases(Arrays.asList(command.aliases()));
 			registerBukkitCommand(cmd);
 		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
