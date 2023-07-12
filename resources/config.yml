@@ -15,7 +15,7 @@ multithreading:
   threads: 2
 
 debug:
-  enable-debug: true
+  enable-debug: false
   less-console-messages: false
   console-feedback: true
 
