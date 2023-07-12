@@ -115,7 +115,7 @@ public class OpenLib extends OpenPlugin {
 		resourceId = 38074;
 		playerDatabase = PlayerFileStorage.createDatabase(this);
 
-		new Metrics(instance, 2908);
+		new Metrics(instance, 19071);
 
 		RedstoneParts.init();
 

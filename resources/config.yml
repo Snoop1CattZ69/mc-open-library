@@ -31,17 +31,18 @@ enable-attack-cooldown: true
 player-data-default: []
 #- 'some.key:value'
 
-external-libs:
-  ejcore-bots: false
-  ejcore-webserver: false
-  ejcore-database: false
+# Not works at this moment
+#external-libs:
+#  openlib-bots: false
+#  openlib-webserver: false
+#  openlib-database: false
 
-# Database properties
-database:
-  db-type: sqlite
-  mysql:
-    username: root
-    password: toor
+# Not works at this moment
+#database:
+#  db-type: sqlite
+#  mysql:
+#    username: root
+#    password: toor
 
 modules:
   enable-by-default: true

@@ -8,6 +8,7 @@ import java.util.Set;
 import org.aslstd.api.bukkit.settings.Settings;
 import org.aslstd.api.bukkit.yaml.Yaml;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * <p>StringSettings class.</p>
@@ -107,9 +108,11 @@ public class StringSettings extends Settings<String> {
 	 * @param file a {@link Yaml} object
 	 * @param section a {@link String} object
 	 */
-	public void exportYaml(@NotNull Yaml file, @NotNull String section) {
-		if (!section.equalsIgnoreCase(""))
-			section = section + ".";
+	public void exportYaml(@NotNull Yaml file, @Nullable String section) {
+		if (section == null) section = "";
+		else
+			if (!section.equalsIgnoreCase(""))
+				section = section + ".";
 
 		for (final Map.Entry<String, String> key : getKeys()) {
 			if (key.getKey().matches("^.*\\.[1-9]*"))
