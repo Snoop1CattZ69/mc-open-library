@@ -30,6 +30,20 @@ public class Commands {
 		}
 	}
 
+	public static final void unregisterBukkitCommand(Plugin plugin, CommandHandler handler) {
+		final PluginCommand cmd = Bukkit.getPluginCommand(handler.label());
+		try {
+			final Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+			f.setAccessible(true);
+			SimpleCommandMap scm;
+			synchronized (scm = (SimpleCommandMap) f.get(Bukkit.getServer())) {
+				cmd.unregister(scm);
+			}
+		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {
+			Texts.warn("Error unregistering Bukkit command alias");
+			ex.printStackTrace();
+		}
+	}
 
 	private static void registerBukkitCommand(PluginCommand cmd) {
 		try {

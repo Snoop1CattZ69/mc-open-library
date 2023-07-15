@@ -11,6 +11,7 @@ import org.aslstd.api.bukkit.command.Handler;
 import org.aslstd.api.bukkit.command.OCommand;
 import org.aslstd.api.bukkit.message.Texts;
 import org.aslstd.api.bukkit.yaml.Yaml;
+import org.aslstd.core.service.Commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -60,6 +61,27 @@ public class CommandHandler implements Handler {
 			aliases = temp.replaceAll("\\s+", "").split(",");
 		}
 		this.label = conf.getString(defLabel + ".command-label", label, true);
+	}
+
+	public void reload() {
+		Commands.unregisterBukkitCommand(plugin, this);
+		conf.reload();
+
+		final String temp = conf.getString(defLabel + ".command-aliases");
+		if (temp != null) {
+			aliases = temp.replaceAll("\\s+", "").split(",");
+		}
+
+		synchronized (commands) {
+			commands.values().forEach(OCommand::reload);
+		}
+
+		register();
+	}
+
+	public CommandHandler register() {
+		Commands.registerCommand(plugin, this);
+		return this;
 	}
 
 	/** {@inheritDoc} */

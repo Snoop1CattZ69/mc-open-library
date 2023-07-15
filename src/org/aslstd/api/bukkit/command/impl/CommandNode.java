@@ -42,10 +42,10 @@ public class CommandNode implements OCommand {
 	 */
 	public CommandNode(CommandHandler handler, String label, int minArgs, Executor func) {
 		defLabel = label;
-		final String section = handler.defLabel() + ".subcommands." + label + ".";
-		this.label = handler.conf.getString(section + "command-name", label, true);
-		this.description = handler.conf.getString(section + "description", description() == null ? label + " command description" : description(), true);
-		this.permission = handler.conf.getString(section + "permission", permission() == null ? handler.plugin.getName().toLowerCase() + ".command." + label : permission(), true);
+		final String section = handler.defLabel() + ".subcommands." + defLabel + ".";
+		this.label = handler.conf.getString(section + "command-name", defLabel, true);
+		this.description = handler.conf.getString(section + "description", description() == null ? defLabel + " command description" : description(), true);
+		this.permission = handler.conf.getString(section + "permission", permission() == null ? handler.plugin.getName().toLowerCase() + ".command." + defLabel : permission(), true);
 		this.arguments = handler.conf.getString(section + "usage-args", "", true);
 		this.senderType = SenderType.of(handler.conf.getString(section + "sender-type", "ALL", true));
 		this.func = func;
@@ -58,6 +58,16 @@ public class CommandNode implements OCommand {
 	public CommandNode(CommandHandler handler, String label, int minArgs, Executor func, List<Predicate<CommandSender>> filters) {
 		this(handler, label, minArgs, func);
 		conditions.addAll(filters);
+	}
+
+	@Override
+	public void reload() {
+		final String section = handler.defLabel() + ".subcommands." + defLabel + ".";
+		this.label = handler.conf.getString(section + "command-name", defLabel, true);
+		this.description = handler.conf.getString(section + "description", description() == null ? defLabel + " command description" : description(), true);
+		this.permission = handler.conf.getString(section + "permission", permission() == null ? handler.plugin.getName().toLowerCase() + ".command." + defLabel : permission(), true);
+		this.arguments = handler.conf.getString(section + "usage-args", "", true);
+		this.senderType = SenderType.of(handler.conf.getString(section + "sender-type", "ALL", true));
 	}
 
 	/**

@@ -27,4 +27,6 @@ public interface OCommand {
 
 	int minArgs();
 
+	default void reload() {}
+
 }

@@ -27,7 +27,6 @@ import org.aslstd.core.listener.temp.CancelJoinBeforeFullLoading;
 import org.aslstd.core.platform.scheduler.provider.BukkitSchedulerProvider;
 import org.aslstd.core.platform.scheduler.provider.FoliaSchedulerProvider;
 import org.aslstd.core.platform.scheduler.provider.SchedulerProvider;
-import org.aslstd.core.service.Commands;
 import org.aslstd.core.service.Listeners;
 import org.aslstd.core.service.Listeners.Collector;
 import org.aslstd.core.task.LoadOpenPlugins;
@@ -133,8 +132,7 @@ public class OpenLib extends OpenPlugin {
 		Test.start();
 		Collector.forPlugin(this).collect(new PlayerListener(), new PaneInteractListener(), new CombatListener(), new EquipListener()).push();
 
-		handler = new CoreCommandHandler();
-		Commands.registerCommand(this, handler);
+		handler = new CoreCommandHandler().register();
 
 		for (final Plugin plugin : Bukkit.getPluginManager().getPlugins())
 			if (plugin instanceof OpenPlugin && !plugin.getName().equalsIgnoreCase(this.getName()))
@@ -162,9 +160,13 @@ public class OpenLib extends OpenPlugin {
 		workers.shutdown();
 	}
 
+	@Override
+	public void reloadPlugin() {
+		handler.reload();
+	}
+
 	public void reloadPlugins() {
 		plugins.forEach(OpenPlugin::reloadPlugin);
-
 	}
 
 }
