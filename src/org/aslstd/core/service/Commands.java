@@ -14,50 +14,48 @@ import org.bukkit.plugin.Plugin;
 
 public class Commands {
 
+	private static Field cmdMap;
+	private static SimpleCommandMap scm;
+	private static Constructor<PluginCommand> pcC;
+
+	static {
+		try {
+			cmdMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+			cmdMap.setAccessible(true);
+			scm = (SimpleCommandMap) cmdMap.get(Bukkit.getServer());
+
+			pcC = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
+			pcC.setAccessible(true);
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException e) {
+			e.printStackTrace();
+			Texts.warn("Error while initializing variables, check error above");
+			Texts.warn("Maybe this caused because you're not using the Paper or it's forks.");
+		}
+	}
+
 	public static final void registerCommand(Plugin plugin, CommandHandler command) {
 		try {
-			final Constructor<PluginCommand> constr = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
-			constr.setAccessible(true);
+			final PluginCommand cmd = pcC.newInstance(command.label().toLowerCase(), plugin);
 
-			final PluginCommand cmd = constr.newInstance(command.label().toLowerCase(), plugin);
 			cmd.setExecutor(command);
 			cmd.setTabCompleter(command);
 			if (command.aliases() != null)
 				cmd.setAliases(Arrays.asList(command.aliases()));
 			registerBukkitCommand(cmd);
-		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+		} catch (IllegalAccessException | InstantiationException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static final void unregisterBukkitCommand(Plugin plugin, CommandHandler handler) {
-		final PluginCommand cmd = Bukkit.getPluginCommand(handler.label());
-		try {
-			final Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-			f.setAccessible(true);
-			SimpleCommandMap scm;
-			synchronized (scm = (SimpleCommandMap) f.get(Bukkit.getServer())) {
-				cmd.unregister(scm);
-			}
-		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {
-			Texts.warn("Error unregistering Bukkit command alias");
-			ex.printStackTrace();
+		synchronized (scm) {
+			Bukkit.getPluginCommand(handler.label()).unregister(scm);
 		}
 	}
 
 	private static void registerBukkitCommand(PluginCommand cmd) {
-		try {
-			final Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-			f.setAccessible(true);
-			SimpleCommandMap scm;
-			synchronized (scm = (SimpleCommandMap) f.get(Bukkit.getServer())) {
-
-				scm.register(cmd.getName().toLowerCase(), cmd);
-
-			}
-		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {
-			Texts.warn("Error registering Bukkit command alias");
-			ex.printStackTrace();
+		synchronized (scm) {
+			scm.register(cmd.getName().toLowerCase(), cmd);
 		}
 	}
 
