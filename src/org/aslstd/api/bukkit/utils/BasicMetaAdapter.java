@@ -17,17 +17,19 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import lombok.experimental.UtilityClass;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 
 /**
  * Will be included in ItemStackUtil in future
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-public final class BasicMetaAdapter { // Basic Lore Adapter
+@UtilityClass
+public class BasicMetaAdapter { // Basic Lore Adapter
 
-	private static Matcher matcher;
+	private Matcher matcher;
 
 	/**
 	 * <p>getStringValue.</p>
@@ -36,7 +38,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param stack a {@link org.bukkit.inventory.ItemStack} object
 	 * @return a {@link String} object
 	 */
-	public static @Nonnull String getStringValue(Pattern patt, ItemStack stack) {
+	public @Nonnull String getStringValue(Pattern patt, ItemStack stack) {
 		if  (!ItemStackUtil.validate(stack, IStatus.HAS_LORE)) return "";
 		return getStringValue(patt, stack.getItemMeta().lore().toString() );
 	}
@@ -48,7 +50,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param lore a {@link List} object
 	 * @return a {@link String} object
 	 */
-	public static @Nonnull String getStringValue(Pattern patt, List<Component> lore) {
+	public @Nonnull String getStringValue(Pattern patt, List<Component> lore) {
 		String value = "";
 		if (contains(lore, patt)) {
 			matcher = patt.matcher(Texts.e(lore.toString()).toLowerCase());
@@ -71,7 +73,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param strings a {@link String} object
 	 * @return a {@link org.bukkit.inventory.ItemStack} object
 	 */
-	public static ItemStack addLore(ItemStack stack, String... strings) {
+	public ItemStack addLore(ItemStack stack, String... strings) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return stack;
 		final ItemMeta meta = stack.getItemMeta();
 		List<Component> lore = new ArrayList<>();
@@ -94,7 +96,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param lore a {@link List} object
 	 * @return a {@link org.bukkit.inventory.ItemStack} object
 	 */
-	public static ItemStack setLore(ItemStack stack, List<String> lore) {
+	public ItemStack setLore(ItemStack stack, List<String> lore) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL) || lore.isEmpty()) return stack;
 		final ItemMeta meta = stack.getItemMeta();
 
@@ -117,7 +119,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param loreString a {@link String} object
 	 * @return a {@link org.bukkit.inventory.ItemStack} object
 	 */
-	public static ItemStack setLore(ItemStack stack, int index, String loreString) {
+	public ItemStack setLore(ItemStack stack, int index, String loreString) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return stack;
 		final ItemMeta meta = stack.getItemMeta();
 		List<Component> lore = new ArrayList<>();
@@ -143,7 +145,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param flags a {@link org.bukkit.inventory.ItemFlag} object
 	 * @return a {@link org.bukkit.inventory.ItemStack} object
 	 */
-	public static ItemStack setHideFlags(ItemStack stack, ItemFlag... flags) {
+	public ItemStack setHideFlags(ItemStack stack, ItemFlag... flags) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return stack;
 		stack.editMeta(meta -> {
 			Stream.of(flags).filter(f -> !meta.hasItemFlag(f)).forEach(meta::addItemFlags);
@@ -161,7 +163,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param ignoreLvl a boolean
 	 * @return a {@link org.bukkit.inventory.ItemStack} object
 	 */
-	public static ItemStack addEnchant(ItemStack stack, Enchantment ench, int lvl, boolean ignoreLvl) {
+	public ItemStack addEnchant(ItemStack stack, Enchantment ench, int lvl, boolean ignoreLvl) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return stack;
 
 		stack.editMeta(meta -> {
@@ -180,7 +182,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param display a {@link String} object
 	 * @return a {@link org.bukkit.inventory.ItemStack} object
 	 */
-	public static ItemStack setDisplayName(ItemStack stack, String display) {
+	public ItemStack setDisplayName(ItemStack stack, String display) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return stack;
 
 		stack.editMeta(meta -> {
@@ -197,7 +199,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param loreString a {@link String} object
 	 * @return a {@link String} object
 	 */
-	public static String getStringValue(Pattern patt, String loreString) {
+	public String getStringValue(Pattern patt, String loreString) {
 		String value = "";
 
 		if (contains(loreString, patt)) {
@@ -215,7 +217,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param value a {@link String} object
 	 * @return a {@link String} object
 	 */
-	public static String getLore(String key, String value) {
+	public String getLore(String key, String value) {
 		return Texts.c(key + ": " + value);
 	}
 
@@ -226,7 +228,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param stack a {@link org.bukkit.inventory.ItemStack} object
 	 * @return a double
 	 */
-	public static double getDoubleValue(Pattern patt, ItemStack stack) {
+	public double getDoubleValue(Pattern patt, ItemStack stack) {
 		if  (!ItemStackUtil.validate(stack, IStatus.HAS_LORE)) return 0.0D;
 		return getDoubleValue(patt, stack.getItemMeta().lore());
 	}
@@ -238,7 +240,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param lore a {@link List} object
 	 * @return a double
 	 */
-	public static double getDoubleValue(Pattern patt, List<Component> lore) {
+	public double getDoubleValue(Pattern patt, List<Component> lore) {
 		String value = "0.0D";
 
 		if (contains(lore, patt)) {
@@ -257,7 +259,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param patt a {@link java.util.regex.Pattern} object
 	 * @return a boolean
 	 */
-	public static boolean contains(String loreString, Pattern patt) { return patt.matcher(Texts.e(loreString).toLowerCase()).find(); }
+	public boolean contains(String loreString, Pattern patt) { return patt.matcher(Texts.e(loreString).toLowerCase()).find(); }
 	/**
 	 * <p>contains.</p>
 	 *
@@ -265,7 +267,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param patt a {@link java.util.regex.Pattern} object
 	 * @return a boolean
 	 */
-	public static boolean contains(List<Component> lore, Pattern patt) { return patt.matcher(Texts.e(lore.toString()).toLowerCase()).find(); }
+	public boolean contains(List<Component> lore, Pattern patt) { return patt.matcher(Texts.e(lore.toString()).toLowerCase()).find(); }
 	/**
 	 * <p>contains.</p>
 	 *
@@ -273,7 +275,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param patt a {@link java.util.regex.Pattern} object
 	 * @return a boolean
 	 */
-	public static boolean contains(ItemStack item, Pattern patt) {
+	public boolean contains(ItemStack item, Pattern patt) {
 		if (!ItemStackUtil.validate(item, IStatus.HAS_LORE)) return false;
 		return contains(item.getItemMeta().lore(), patt);
 	}
@@ -285,7 +287,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param patt a {@link java.util.regex.Pattern} object
 	 * @return a int
 	 */
-	public static int indexOf(List<Component> lore, Pattern patt) {
+	public int indexOf(List<Component> lore, Pattern patt) {
 		Matcher m;
 
 		for (int l = 0 ; l < lore.size() ; l++) {
@@ -304,7 +306,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param check a {@link String} object
 	 * @return a int
 	 */
-	public static int indexOf(List<String> lore, String check) {
+	public int indexOf(List<String> lore, String check) {
 		for (int i = 0 ; i < lore.size() ; i++) {
 			if (Texts.e(lore.get(i)).startsWith(Texts.e(check)))
 				return i;
@@ -320,7 +322,7 @@ public final class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param patt a {@link java.util.regex.Pattern} object
 	 * @return a boolean
 	 */
-	public static boolean isPercent(List<String> lore, Pattern patt) {
+	public boolean isPercent(List<String> lore, Pattern patt) {
 		matcher = patt.matcher(lore.toString().toLowerCase());
 		if (matcher.find())
 			if (matcher.group(1) != null)

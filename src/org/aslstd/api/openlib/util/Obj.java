@@ -9,16 +9,22 @@ import org.aslstd.api.bukkit.message.Texts;
 import org.aslstd.api.openlib.exceptions.CatchableNullException;
 
 import lombok.SneakyThrows;
+import lombok.experimental.UtilityClass;
 
+/**
+ *
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
+ */
+@UtilityClass
 public class Obj {
 
 	@SneakyThrows
-	public static void checkNull(Object... objects) {
+	public void checkNull(Object... objects) {
 		checkNull("Null catched", objects);
 	}
 
 	@SneakyThrows
-	public static void checkNull(String message, Object... objects) {
+	public void checkNull(String message, Object... objects) {
 		List<Object> obj = Stream.of(objects).filter(Objects::isNull).collect(Collectors.toList());
 		if (!obj.isEmpty()) {
 			for (Object o : obj)
@@ -28,17 +34,17 @@ public class Obj {
 	}
 
 	@SneakyThrows
-	public static <O> O nonNull(String message, O obj) {
+	public <O> O nonNull(String message, O obj) {
 		if (obj == null) throw new CatchableNullException(message);
 		return obj;
 	}
 
 	@SneakyThrows
-	public static <O> O nonNull(O obj) {
+	public <O> O nonNull(O obj) {
 		return nonNull("Null catched", obj);
 	}
 
-	public static boolean classExist(String className) {
+	public boolean classExist(String className) {
 		try {
 			Class.forName(className);
 			return true;

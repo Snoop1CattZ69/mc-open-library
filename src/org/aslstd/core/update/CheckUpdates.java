@@ -18,12 +18,15 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Consumer;
 
+import lombok.experimental.UtilityClass;
+
 @SuppressWarnings("deprecation")
+@UtilityClass
 public class CheckUpdates {
 
-	private static List<OpenPlugin> openPlugins = new ArrayList<>();
+	private List<OpenPlugin> openPlugins = new ArrayList<>();
 
-	public static void checkUpdates() {
+	public void checkUpdates() {
 
 		for (final OpenPlugin plugin : openPlugins) {
 
@@ -38,7 +41,7 @@ public class CheckUpdates {
 
 	}
 
-	public static void sendUpdateMessage(CommandSender p) {
+	public void sendUpdateMessage(CommandSender p) {
 		if (p instanceof ConsoleCommandSender)
 			Texts.sendLB();
 
@@ -66,7 +69,7 @@ public class CheckUpdates {
 			Texts.sendLB();
 	}
 
-	private static void getVersion(final Consumer<String> consumer, OpenPlugin plugin) {
+	private void getVersion(final Consumer<String> consumer, OpenPlugin plugin) {
 		if (plugin.getResourceId() == -1)
 			return;
 
@@ -82,7 +85,7 @@ public class CheckUpdates {
 		});
 	}
 
-	public static void registerOpenPlugin(OpenPlugin ejp) {
+	public void registerOpenPlugin(OpenPlugin ejp) {
 
 		final int build = parseBuild(ejp.getDescription().getVersion(), false);
 		ejp.setBuild(build);
@@ -94,26 +97,26 @@ public class CheckUpdates {
 
 	}
 
-	private static String cleanVersion(String version, boolean fromSite) {
+	private String cleanVersion(String version, boolean fromSite) {
 		return version.replaceAll("\\s", "").substring(0, (version.indexOf("[") == -1 ? version.length() : version.indexOf("[")))
 				.substring(0, (version.indexOf("-") == -1 ? version.length() : version.indexOf("-")));
 	}
 
-	private static int parseBuild(String version, boolean fromSite) {
+	private int parseBuild(String version, boolean fromSite) {
 		final String prepaired = cleanVersion(version, fromSite);
 
 		return NumUtil.parseInteger(prepaired.substring(prepaired.lastIndexOf(".")+1));
 	}
 
-	public static class Task implements Runnable {
+	public class Task implements Runnable {
 
 		/** Constant <code>task</code> */
-		protected static Scheduled task = null;
+		protected Scheduled task = null;
 
 		/**
 		 * <p>runTask.</p>
 		 */
-		public static void runTask() {
+		public void runTask() {
 			if (task == null)
 				task = OpenLib.scheduler().asyncRepeat(OpenLib.instance(), new Task(), 20L, 144000L);
 		}

@@ -4,13 +4,15 @@ import org.aslstd.api.bukkit.message.Texts;
 import org.bukkit.OfflinePlayer;
 
 import lombok.Getter;
+import lombok.experimental.UtilityClass;
 
 /**
  * <p>ServerVersion class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-public final class ServerVersion {
+@UtilityClass
+public class ServerVersion {
 
 	/** Constant <code>VER_1_5_2=1502</code> */
 	/** Constant <code>VER_1_6_2=1602</code> */
@@ -37,7 +39,7 @@ public final class ServerVersion {
 	/** Constant <code>VER_1_16_4=11604</code> */
 	/** Constant <code>VER_1_17=11700</code> */
 	/** Constant <code>VER_1_18=11800</code> */
-	public static final int
+	public final int
 	/////////////////////// VERSION CONSTANS
 	LEGACY		 = 0,	 //
 	VER_1_16	 = 11600,//
@@ -48,8 +50,8 @@ public final class ServerVersion {
 	///////////////////////
 
 
-	@Getter private static int		VERSION		= -1;
-	@Getter private static String	TYPE		= "UNKNOWN";
+	@Getter private int		VERSION		= -1;
+	@Getter private String	TYPE		= "UNKNOWN";
 
 	/**
 	 * <p>init.</p>
@@ -57,7 +59,7 @@ public final class ServerVersion {
 	 * @param version a {@link String} object
 	 * @param serverType a {@link String} object
 	 */
-	public static void init(String version, String serverType) {
+	public void init(String version, String serverType) {
 		if (serverType != null) ServerVersion.TYPE = serverType;
 
 		try {
@@ -83,13 +85,13 @@ public final class ServerVersion {
 	 * @param version a int
 	 * @return a boolean
 	 */
-	public static boolean isVersionAtLeast(int version) { return ServerVersion.VERSION < version; }
+	public boolean isVersionAtLeast(int version) { return ServerVersion.VERSION < version; }
 	/**
 	 * <p>isVersionAtMost.</p>
 	 *
 	 * @param version a int
 	 * @return a boolean
 	 */
-	public static boolean isVersionAtMost(int version) { return ServerVersion.VERSION >= version; }
+	public boolean isVersionAtMost(int version) { return ServerVersion.VERSION >= version; }
 
 }

@@ -15,7 +15,7 @@ import io.papermc.paper.threadedregions.scheduler.RegionScheduler;
 
 public class FoliaSchedulerProvider implements SchedulerProvider {
 
-	private RegionScheduler region = Bukkit.getServer().getRegionScheduler();
+	private final RegionScheduler region = Bukkit.getServer().getRegionScheduler();
 
 	private final GlobalRegionScheduler globalRegion = Bukkit.getServer().getGlobalRegionScheduler();
 

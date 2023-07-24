@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.BiPredicate;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class ArrayUtil {
 
-	public static <T> List<T[]> split(int splitLength, T[] originData) {
+	public <T> List<T[]> split(int splitLength, T[] originData) {
 		if (originData == null) return null;
 
 		final List<T[]> splitData = new LinkedList<>();
@@ -27,7 +30,7 @@ public class ArrayUtil {
 		return splitData;
 	}
 
-	public static <T> List<T> getRandomized(int amount, BiPredicate<List<T>, ? super T> filter, List<T> origin) {
+	public <T> List<T> getRandomized(int amount, BiPredicate<List<T>, ? super T> filter, List<T> origin) {
 		if (origin == null || origin.isEmpty()) return new ArrayList<>();
 
 		final List<T> copy = List.copyOf(origin);

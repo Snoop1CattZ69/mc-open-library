@@ -8,19 +8,22 @@ import org.aslstd.api.bukkit.message.Texts;
 import org.aslstd.api.openlib.player.Options;
 import org.bukkit.inventory.ItemStack;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * <p>Tests class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
+@UtilityClass
 public class Test {
 
-	private static boolean tested = false;
+	private boolean tested = false;
 
 	/**
 	 * <p>start.</p>
 	 */
-	public static void start() {
+	public void start() {
 		if (!tested) {
 			testStringBuffer();
 			testSettings();
@@ -28,7 +31,7 @@ public class Test {
 		}
 	}
 
-	private static void testStringBuffer() {
+	private void testStringBuffer() {
 		Texts.debug("ItemHashConverter System: Checking..♥♦♣♠");
 		final List<String> hashes = Arrays.asList("IRON_SWORD:1:0♦&4Уровень: 1◘&4Крит-Шанс: +3.0◘&5&m--===[&6&l  Аттрибуты &5&m]===--◘&3Урон: +6.0-8.0♥&9Iron Sword");
 
@@ -44,7 +47,7 @@ public class Test {
 		}
 	}
 
-	private static void testSettings() {
+	private void testSettings() {
 		Texts.debug("Settings System: Checking..");
 		final Options options = new Options();
 

@@ -6,15 +6,17 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import lombok.experimental.UtilityClass;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 
 /**
  * <p>InventoryUtil class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-public final class InventoryUtil {
+@UtilityClass
+public class InventoryUtil {
 
 	/**
 	 * <p>addItem.</p>
@@ -23,7 +25,7 @@ public final class InventoryUtil {
 	 * @param p a {@link org.bukkit.entity.Player} object
 	 * @return a boolean
 	 */
-	public static boolean addItem(ItemStack stack, Player p) {
+	public boolean addItem(ItemStack stack, Player p) {
 		if (stack == null) return false;
 
 		for (final ItemStack item : p.getInventory().getStorageContents())
@@ -34,7 +36,7 @@ public final class InventoryUtil {
 		return true;
 	}
 
-	public static int count(Player p, Material type) {
+	public int count(Player p, Material type) {
 		int amount = 0;
 		for (final ItemStack item : p.getInventory().getStorageContents()) {
 			if (item == null) continue;
@@ -51,7 +53,7 @@ public final class InventoryUtil {
 	 * @param p a {@link org.bukkit.entity.Player} object
 	 * @param amount a int
 	 */
-	public static void decreaseItemAmount(ItemStack stack, Player p, int amount) {
+	public void decreaseItemAmount(ItemStack stack, Player p, int amount) {
 		final ItemStack[] storage = p.getInventory().getContents();
 		final String stackString = ItemStackUtil.toString(stack);
 		for (int i = 0; i < storage.length; i++)
@@ -76,7 +78,7 @@ public final class InventoryUtil {
 	 * @param p a {@link org.bukkit.entity.Player} object
 	 * @param amount a int
 	 */
-	public static void decreaseItemChecksNameAmount(ItemStack stack, String name, Player p, int amount) {
+	public void decreaseItemChecksNameAmount(ItemStack stack, String name, Player p, int amount) {
 		if (stack == null) return;
 		int value = amount;
 		final ItemStack[] storage = p.getInventory().getStorageContents();
@@ -109,7 +111,7 @@ public final class InventoryUtil {
 	 * @param stack a {@link org.bukkit.inventory.ItemStack} object
 	 * @param p a {@link org.bukkit.entity.Player} object
 	 */
-	public static void decreaseItem(ItemStack stack, Player p) {
+	public void decreaseItem(ItemStack stack, Player p) {
 		InventoryUtil.decreaseItemAmount(stack,p,1);
 	}
 
@@ -119,7 +121,7 @@ public final class InventoryUtil {
 	 * @param stack a {@link org.bukkit.inventory.ItemStack} object
 	 * @param p a {@link org.bukkit.entity.Player} object
 	 */
-	public static void decreaseItemChecksName(ItemStack stack, Player p) {
+	public void decreaseItemChecksName(ItemStack stack, Player p) {
 		InventoryUtil.decreaseItemChecksNameAmount(stack,"",p,1);
 	}
 
@@ -129,7 +131,7 @@ public final class InventoryUtil {
 	 * @param stack a {@link org.bukkit.inventory.ItemStack} object
 	 * @param p a {@link org.bukkit.entity.Player} object
 	 */
-	public static void removeItem(ItemStack stack, Player p) {
+	public void removeItem(ItemStack stack, Player p) {
 		final ItemStack[] storage = p.getInventory().getStorageContents();
 		for (int i = 0; i < storage.length; i++)
 			if (ItemStackUtil.toString(stack).equals(ItemStackUtil.toString(storage[i]))) {

@@ -12,13 +12,16 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.plugin.Plugin;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class Commands {
 
-	private static Field cmdMap;
-	private static SimpleCommandMap scm;
-	private static Constructor<PluginCommand> pcC;
+	private Field cmdMap;
+	private SimpleCommandMap scm;
+	private Constructor<PluginCommand> pcC;
 
-	static {
+	{
 		try {
 			cmdMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
 			cmdMap.setAccessible(true);
@@ -33,7 +36,7 @@ public class Commands {
 		}
 	}
 
-	public static final void registerCommand(Plugin plugin, CommandHandler command) {
+	public final void registerCommand(Plugin plugin, CommandHandler command) {
 		try {
 			final PluginCommand cmd = pcC.newInstance(command.label().toLowerCase(), plugin);
 
@@ -47,13 +50,13 @@ public class Commands {
 		}
 	}
 
-	public static final void unregisterBukkitCommand(Plugin plugin, CommandHandler handler) {
+	public final void unregisterBukkitCommand(Plugin plugin, CommandHandler handler) {
 		synchronized (scm) {
 			Bukkit.getPluginCommand(handler.label()).unregister(scm);
 		}
 	}
 
-	private static void registerBukkitCommand(PluginCommand cmd) {
+	private void registerBukkitCommand(PluginCommand cmd) {
 		synchronized (scm) {
 			scm.register(cmd.getName().toLowerCase(), cmd);
 		}

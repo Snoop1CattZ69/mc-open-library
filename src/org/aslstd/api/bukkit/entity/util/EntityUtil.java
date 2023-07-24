@@ -11,12 +11,15 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * <p>EntityUtil class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-public final class EntityUtil {
+@UtilityClass
+public class EntityUtil {
 
 	/**
 	 * <p>getNearbyEntities.</p>
@@ -27,7 +30,7 @@ public final class EntityUtil {
 	 * @param z a double
 	 * @return a {@link List} object
 	 */
-	public static List<Entity> getNearbyEntities(Player p, double x, double y, double z) {
+	public List<Entity> getNearbyEntities(Player p, double x, double y, double z) {
 		final List<Entity> entities = new ArrayList<>();
 
 		final Area3D area = getAreaAroundPlayer(p, x, y, z);
@@ -48,7 +51,7 @@ public final class EntityUtil {
 	 * @param z a double
 	 * @return a {@link List} object
 	 */
-	public static List<Player> getNearbyPlayers(Player p, double x, double y, double z) {
+	public List<Player> getNearbyPlayers(Player p, double x, double y, double z) {
 		final List<Player> players = new ArrayList<>();
 
 		final Area3D area = getAreaAroundPlayer(p, x, y, z);
@@ -69,17 +72,17 @@ public final class EntityUtil {
 	 * @param z a double
 	 * @return a {@link org.aslstd.api.bukkit.location.Area3D} object
 	 */
-	public static Area3D getAreaAroundPlayer(Player p, double x, double y, double z) {
+	public Area3D getAreaAroundPlayer(Player p, double x, double y, double z) {
 		final Vec3 origin = Vec3.of(x/2,y/2,z/2);
 
 		return new Area3D(Vec3.of(p.getLocation()).substract(origin), Vec3.of(p.getLocation()).add(origin));
 	}
 
-	public static Player getOnlinePlayer(String name) {
+	public Player getOnlinePlayer(String name) {
 		return Bukkit.getPlayerExact(name);
 	}
 
-	public static OfflinePlayer getPlayer(String search) {
+	public OfflinePlayer getPlayer(String search) {
 		OfflinePlayer player = Bukkit.getPlayerExact(search);
 		if (player == null)
 			for (final OfflinePlayer ofp : Bukkit.getOfflinePlayers()) {
@@ -98,11 +101,11 @@ public final class EntityUtil {
 	}
 
 
-	public static OfflinePlayer getPlayerByUUID(String uid) {
+	public OfflinePlayer getPlayerByUUID(String uid) {
 		return getPlayerByUUID(uid, false);
 	}
 
-	public static OfflinePlayer getPlayerByUUID(String uid, boolean repeat) {
+	public OfflinePlayer getPlayerByUUID(String uid, boolean repeat) {
 		OfflinePlayer player;
 		try {
 			final UUID forSearch = UUID.fromString(uid);

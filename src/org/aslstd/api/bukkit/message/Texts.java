@@ -22,51 +22,53 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import lombok.Setter;
+import lombok.experimental.UtilityClass;
 
 /**
  * <p>EText class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
 @SuppressWarnings("deprecation")
+@UtilityClass
 public class Texts {
 
 	/** Constant <code>enableConsoleColoring=true</code> */
-	public static boolean enableConsoleColoring = true;
+	public boolean enableConsoleColoring = true;
 
 	/** Constant <code>COLOR_CHAR='\u00A7'</code> */
-	public static final char COLOR_CHAR = '\u00A7';
+	public final char COLOR_CHAR = '\u00A7';
 
 	/** Constant <code>lineBreak="&amp;5#################################"{trunked}</code> */
-	public static final String lineBreak = "&5######################################################################";
+	public final String lineBreak = "&5######################################################################";
 	/** Constant <code>halfLineBreak="&amp;5#################################"{trunked}</code> */
-	public static final String halfLineBreak = "&5###################################";
+	public final String halfLineBreak = "&5###################################";
 
-	public static final String prefix = "MOL";
+	public final String prefix = "MOL";
 
-	@Setter private static boolean debug = false;
-	@Setter private static boolean consoleFeedback = true;
+	@Setter private boolean debug = false;
+	@Setter private boolean consoleFeedback = true;
 
 	/**
 	 * <p>warn.</p>
 	 *
 	 * @param msg a {@link String} object
 	 */
-	public static void warn(String msg) { warn(msg, prefix); }
+	public void warn(String msg) { warn(msg, prefix); }
 
 	/**
 	 * <p>fine.</p>
 	 *
 	 * @param msg a {@link String} object
 	 */
-	public static void fine(String msg) { fine(msg, prefix); }
+	public void fine(String msg) { fine(msg, prefix); }
 
 	/**
 	 * <p>debug.</p>
 	 *
 	 * @param msg a {@link String} object
 	 */
-	public static void debug(String msg) { debug(msg, prefix); }
+	public void debug(String msg) { debug(msg, prefix); }
 
 	/**
 	 * <p>warn.</p>
@@ -74,7 +76,7 @@ public class Texts {
 	 * @param msg a {@link String} object
 	 * @param prefix a {@link String} object
 	 */
-	public static void warn(String msg, String prefix) { send("&5[&2"+ prefix +"&5]&f: #cf083d> " + msg); }
+	public void warn(String msg, String prefix) { send("&5[&2"+ prefix +"&5]&f: #cf083d> " + msg); }
 
 	/**
 	 * <p>fine.</p>
@@ -82,7 +84,7 @@ public class Texts {
 	 * @param msg a {@link String} object
 	 * @param prefix a {@link String} object
 	 */
-	public static void fine(String msg, String prefix) { send("&5[&2"+ prefix +"&5]&f: &3> #28a2c7" + msg); }
+	public void fine(String msg, String prefix) { send("&5[&2"+ prefix +"&5]&f: &3> #28a2c7" + msg); }
 
 	/**
 	 * <p>debug.</p>
@@ -90,27 +92,27 @@ public class Texts {
 	 * @param msg a {@link String} object
 	 * @param prefix a {@link String} object
 	 */
-	public static void debug(String msg, String prefix) { if (debug) sendRawWithNull("&5[&2"+ prefix +"&5]&f: &3> #ccc737", msg); }
+	public void debug(String msg, String prefix) { if (debug) sendRawWithNull("&5[&2"+ prefix +"&5]&f: &3> #ccc737", msg); }
 
 	/** Constant <code>df</code> */
-	public static DecimalFormat df;
+	public DecimalFormat df;
 
-	public static void dumpFile(Settings<?> settings, JavaPlugin plugin) {
+	public void dumpFile(Settings<?> settings, JavaPlugin plugin) {
 		Dumper.dump(settings, plugin);
 	}
 
-	public static void dumpConsole(Settings<?> settings) {
+	public void dumpConsole(Settings<?> settings) {
 		Dumper.dump(settings, null);
 	}
 
-	public static void dump(Player p) {
+	public void dump(Player p) {
 		final OPlayer pl = Pick.of(p);
 		dumpFile(pl.options().data(), OpenLib.instance());
 		dumpFile(pl.options().tempData(), OpenLib.instance());
 		dumpFile(pl.options().tempStore(), OpenLib.instance());
 	}
 
-	static {
+	{
 		df = new DecimalFormat();
 
 		df.setDecimalFormatSymbols(new DecimalFormatSymbols(new Locale("en", "US")));
@@ -132,19 +134,19 @@ public class Texts {
 	 * @param value a double
 	 * @return a {@link String} object
 	 */
-	public static String format(double value) { return df.format(value); }
+	public String format(double value) { return df.format(value); }
 
 	/**
 	 * Send raw message to console.
 	 *
 	 * @param msg a {@link java.lang.Object} object
 	 */
-	public static void sendRaw(Object msg) {
+	public void sendRaw(Object msg) {
 		if (msg != null)
 			Bukkit.getConsoleSender().sendMessage(msg.toString());
 	}
 
-	public static void sendRawWithNull(String suff, Object msg) {
+	public void sendRawWithNull(String suff, Object msg) {
 		Bukkit.getConsoleSender().sendMessage(c(msg == null ? suff + "null" : suff + msg.toString()));
 	}
 
@@ -154,7 +156,7 @@ public class Texts {
 	 *
 	 * @param msg an array of {@link java.lang.Object} objects
 	 */
-	public static void send(Object[] msg) { for(final Object obj : msg) sendRaw(obj); }
+	public void send(Object[] msg) { for(final Object obj : msg) sendRaw(obj); }
 
 	/**
 	 * Send message to CommandSender (Player or Console)
@@ -162,11 +164,11 @@ public class Texts {
 	 * @param receiver can be {@link org.bukkit.entity.Player} or {@link org.bukkit.command.ConsoleCommandSender}
 	 * @param msg a {@link String} object
 	 */
-	public static void send(Object receiver, String msg) {
+	public void send(Object receiver, String msg) {
 		send(receiver,msg,true);
 	}
 
-	public static void send(Object receiver, String msg, boolean colored) {
+	public void send(Object receiver, String msg, boolean colored) {
 		if (receiver instanceof Player)
 			((Player)receiver).sendMessage(colored ? c(msg) : e(msg));
 		if (receiver instanceof ConsoleCommandSender)
@@ -179,19 +181,19 @@ public class Texts {
 	 *
 	 * @param msg a {@link String} object
 	 */
-	public static void send(String msg) {
+	public void send(String msg) {
 		sendRaw(enableConsoleColoring ? c(msg) : e(msg));
 	}
 
 	/**
 	 * Send line with 64 '#' red chars
 	 */
-	public static void sendLB() { send(lineBreak); }
+	public void sendLB() { send(lineBreak); }
 
 	/**
 	 * Send line with 32 '#' red chars
 	 */
-	public static void sendHLB() { send(halfLineBreak); }
+	public void sendHLB() { send(halfLineBreak); }
 
 	/**
 	 * Colorizes all "&amp;" and hex colors
@@ -199,7 +201,7 @@ public class Texts {
 	 * @param msg a {@link String} object
 	 * @return a {@link String} object
 	 */
-	public static String c(String msg) {
+	public String c(String msg) {
 		return ChatColor.translateAlternateColorCodes('&', translateHexColorCodes(msg));
 	}
 
@@ -209,7 +211,7 @@ public class Texts {
 	 * @param msg a {@link String} object
 	 * @return a {@link String} object
 	 */
-	public static String s(String msg) { return ChatColor.stripColor(msg); }
+	public String s(String msg) { return ChatColor.stripColor(msg); }
 
 	/**
 	 * Erases all '&amp;' and '§amp;' color codes
@@ -217,7 +219,7 @@ public class Texts {
 	 * @param msg a {@link String} object
 	 * @return a {@link String} object
 	 */
-	public static String e(String msg) { return s(c(msg)); }
+	public String e(String msg) { return s(c(msg)); }
 
 	/**
 	 * Trims first argument and return all others
@@ -225,14 +227,14 @@ public class Texts {
 	 * @param args an array of {@link String} objects
 	 * @return an array of {@link String} objects
 	 */
-	public static String[] trimArgs(String[] args) {
+	public String[] trimArgs(String[] args) {
 		if (args.length == 0) return new String[0];
 		final String[] ret = new String[args.length - 1];
 		System.arraycopy(args, 1, ret, 0, args.length - 1);
 		return ret;
 	}
 
-	private static String translateHexColorCodes(String message) {
+	private String translateHexColorCodes(String message) {
 		final Pattern hexPattern = Pattern.compile("\\#([A-Fa-f0-9]{6})");
 		final Matcher matcher = hexPattern.matcher(message);
 		final StringBuffer buffer = new StringBuffer(message.length() + 4 * 8);
@@ -255,7 +257,7 @@ public class Texts {
 	 * @param args a {@link java.lang.Object} object
 	 * @return a {@link String} object
 	 */
-	public static String getSpaced(Object... args) {
+	public String getSpaced(Object... args) {
 		final StringBuffer buff = new StringBuffer();
 
 		for (int i = 0 ; i < args.length ; i++) {
@@ -271,8 +273,9 @@ public class Texts {
 		return buff.toString();
 	}
 
-	static class Dumper {
-		static void dump(Settings<?> settings, JavaPlugin plugin) {
+	@UtilityClass
+	class Dumper {
+		void dump(Settings<?> settings, JavaPlugin plugin) {
 			if (plugin == null)
 				for (final Map.Entry<String, ?> entry : settings.settings.entrySet())
 					Texts.warn(String.valueOf(entry.getKey()) + ": &a" + entry.getValue());

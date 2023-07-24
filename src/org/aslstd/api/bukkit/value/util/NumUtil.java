@@ -2,11 +2,14 @@ package org.aslstd.api.bukkit.value.util;
 
 import java.util.Random;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * <p>ValueUtil class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
+@UtilityClass
 public class NumUtil {
 
 	/**
@@ -15,7 +18,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a boolean
 	 */
-	public static boolean isNegative(String value) {
+	public boolean isNegative(String value) {
 		if (isNumber(value) && Double.parseDouble(value) < 0) return true;
 
 		if (value.startsWith("-")) return true;
@@ -28,7 +31,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a boolean
 	 */
-	public static boolean isNumber(String value) {
+	public boolean isNumber(String value) {
 		try {
 			Double.parseDouble(value);
 			return true;
@@ -37,7 +40,7 @@ public class NumUtil {
 		}
 	}
 
-	public static boolean isNumberDistance(String value) {
+	public boolean isNumberDistance(String value) {
 		if (value.contains("-")) {
 			final String[] s = value.split("-");
 			if (s.length <= 1 || s.length > 2) return false;
@@ -54,7 +57,7 @@ public class NumUtil {
 	 * @param random a int
 	 * @return a boolean
 	 */
-	public static boolean isTrue(double chance, int random) {
+	public boolean isTrue(double chance, int random) {
 		return chance >= new Random().nextInt(random);
 	}
 
@@ -64,7 +67,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a boolean
 	 */
-	public static boolean isString(String value) {
+	public boolean isString(String value) {
 		return !isNumber(value);
 	}
 
@@ -74,7 +77,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a boolean
 	 */
-	public static boolean isPercent(String value) {
+	public boolean isPercent(String value) {
 		if (isString(value)) return value.contains("%");
 		return false;
 	}
@@ -85,7 +88,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a {@link java.lang.Long} object
 	 */
-	public static Long parseLong(String value) {
+	public Long parseLong(String value) {
 		try {
 			return Long.parseLong(value);
 		} catch (final NumberFormatException e) {
@@ -100,7 +103,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a {@link Double} object
 	 */
-	public static Double parseDouble(String value) {
+	public Double parseDouble(String value) {
 		try {
 			return Double.parseDouble(value);
 		} catch (final NumberFormatException e) {
@@ -115,7 +118,7 @@ public class NumUtil {
 	 * @param values a {@link String} object
 	 * @return an array of {@link double} objects
 	 */
-	public static double[] parseDouble(String... values) {
+	public double[] parseDouble(String... values) {
 		if (values.length < 1 || values[0] == null || !isNumber(values[0])) return new double[] { 0d };
 		final double[] result = new double[values.length];
 
@@ -132,7 +135,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a {@link Integer} object
 	 */
-	public static Integer parseInteger(String value) {
+	public Integer parseInteger(String value) {
 		final Long req = parseLong(value);
 
 		return (req < Integer.MIN_VALUE ? Integer.MIN_VALUE :
@@ -146,7 +149,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a {@link Short} object
 	 */
-	public static Short parseShort(String value) {
+	public Short parseShort(String value) {
 		final Integer req = parseInteger(value);
 
 		return (req < Short.MIN_VALUE ? Short.MIN_VALUE :
@@ -160,7 +163,7 @@ public class NumUtil {
 	 * @param value a {@link String} object
 	 * @return a {@link Float} object
 	 */
-	public static Float parseFloat(String value) {
+	public Float parseFloat(String value) {
 		final Double req = parseDouble(value);
 
 		return (req < Float.MIN_VALUE ? Float.MIN_VALUE :

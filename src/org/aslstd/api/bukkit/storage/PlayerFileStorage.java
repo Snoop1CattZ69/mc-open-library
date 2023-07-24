@@ -18,7 +18,6 @@ public class PlayerFileStorage {
 
 	@Getter private static final ConcurrentMap<JavaPlugin, PlayerFileStorage> databases = new ConcurrentHashMap<>();
 
-
 	public static @NotNull PlayerFileStorage createDatabase(@NotNull JavaPlugin plugin) {
 		Obj.checkNull(plugin);
 

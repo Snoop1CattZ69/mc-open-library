@@ -3,7 +3,7 @@ package org.aslstd.api.openlib.expression.parser;
 /**
  * <p>ExpressionSource interface.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
 public interface ExpressionSource {
 	/**

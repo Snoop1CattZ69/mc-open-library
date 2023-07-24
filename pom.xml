@@ -169,21 +169,7 @@
 
 	<dependencies>
 
-		<!-- HikariCP SQL -->
-		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-			<version>4.0.3</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.mojang</groupId>
-			<artifactId>authlib</artifactId>
-			<version>2.1.28</version>
-			<scope>provided</scope>
-		</dependency>
-
+		<!-- Compile Project: EffectLib -->
 		<dependency>
 			<groupId>com.elmakers.mine.bukkit</groupId>
 			<artifactId>EffectLib</artifactId>
@@ -230,7 +216,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- LuckPerms -->
+		<!-- LuckPermsAPI -->
 		<dependency>
 			<groupId>net.luckperms</groupId>
 			<artifactId>api</artifactId>
@@ -245,6 +231,7 @@
 			<version>1.7</version>
 			<scope>provided</scope>
 			<exclusions>
+				<!-- old org.bukkit api was included into Vault, uh :( -->
 				<exclusion>
 					<groupId>org.bukkit</groupId>
 					<artifactId>bukkit</artifactId>
@@ -252,6 +239,23 @@
 			</exclusions>
 		</dependency>
 
+		<!-- HikariCP SQL -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>4.0.3</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Mojang Authlib -->
+		<dependency>
+			<groupId>com.mojang</groupId>
+			<artifactId>authlib</artifactId>
+			<version>2.1.28</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JetBrains Annotations -->
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
@@ -271,6 +275,7 @@
 
 	<repositories>
 
+		<!-- Minecraft.net Libraries -->
 		<repository>
 			<id>minecraft-repo</id>
 			<url>https://libraries.minecraft.net/</url>
@@ -294,24 +299,26 @@
 			<url>https://maven.enginehub.org/repo/</url>
 		</repository>
 
-		<!-- PlaceholdersAPI Repo -->
+		<!-- PlaceholdersAPI -->
 		<repository>
 			<id>placeholderapi</id>
 			<url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
 		</repository>
 
-		<!-- EffectLib Repo -->
+		<!-- EffectLib -->
 		<repository>
 			<id>grandwork</id>
 			<url>https://repo.zoommax.ru/repository/grandwork/</url>
 		</repository>
 
+		<!-- Item-NBT-API -->
 		<repository>
 			<id>codemc-repo</id>
 			<url>https://repo.codemc.org/repository/maven-public/</url>
 			<layout>default</layout>
 		</repository>
 
+		<!-- Just.. Something ? -->
 		<repository>
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>

@@ -20,6 +20,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.Nullable;
 
+import lombok.experimental.UtilityClass;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 
@@ -27,21 +28,22 @@ import net.kyori.adventure.text.TextComponent;
 /**
  * <p>ItemStackUtil class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-public final class ItemStackUtil {
+@UtilityClass
+public class ItemStackUtil {
 
-	private static HashMap<String,ItemStack> itemsCache = new HashMap<>();
+	private HashMap<String,ItemStack> itemsCache = new HashMap<>();
 
-	public static boolean compareData(ItemStack i1, ItemStack i2) {
+	public boolean compareData(ItemStack i1, ItemStack i2) {
 		return ItemStackUtil.toString(i1).split(":")[1].equalsIgnoreCase(ItemStackUtil.toString(i2).split(":")[1]);
 	}
 
-	public static boolean compareDisplayName(ItemStack i1, ItemStack i2) {
+	public boolean compareDisplayName(ItemStack i1, ItemStack i2) {
 		return ItemStackUtil.getDisplayName(i1).equals(ItemStackUtil.getDisplayName(i2));
 	}
 
-	public static boolean isEquals(ItemStack stack, ItemStack eq) {
+	public boolean isEquals(ItemStack stack, ItemStack eq) {
 		ItemStack one, sec;
 
 		if (stack == null)
@@ -61,14 +63,14 @@ public final class ItemStackUtil {
 		return ItemStackUtil.serialize(one).equals(ItemStackUtil.serialize(sec));
 	}
 
-	public static ItemStack compileStack(String stack) {
+	public ItemStack compileStack(String stack) {
 		if (stack.toUpperCase().startsWith("SKULL")) {
 			return toSkull(stack);
 		} else
 			return toStack(stack);
 	}
 
-	public static ItemStack toSkull(String stack) {
+	public ItemStack toSkull(String stack) {
 		final String[] params = stack.split("@");
 
 		if (params.length < 2)
@@ -85,15 +87,15 @@ public final class ItemStackUtil {
 		return skull;
 	}
 
-	public static ItemStack toStack(String str) {
+	public ItemStack toStack(String str) {
 		return ItemStackUtil.deserialize(str);
 	}
 
-	public static String toString(ItemStack stack) {
+	public String toString(ItemStack stack) {
 		return ItemStackUtil.serialize(stack);
 	}
 
-	public static Component getDisplayName(ItemStack stack) {
+	public Component getDisplayName(ItemStack stack) {
 		if (stack == null) return Component.text("null");
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_META)) return Component.text(stack.getI18NDisplayName());
 		if (ItemStackUtil.validate(stack, IStatus.HAS_DISPLAYNAME))
@@ -101,12 +103,12 @@ public final class ItemStackUtil {
 		return Component.text(stack.getI18NDisplayName());
 	}
 
-	public static List<Component> getLore(ItemStack stack) {
+	public List<Component> getLore(ItemStack stack) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_LORE)) return Arrays.asList(Component.empty());
 		return stack.getItemMeta().lore();
 	}
 
-	public static ItemStack setDamage(ItemStack stack, int damage) {
+	public ItemStack setDamage(ItemStack stack, int damage) {
 		if (ItemStackUtil.hasDurability(stack.getType())) {
 
 			final ItemMeta itemMeta = stack.getItemMeta();
@@ -119,7 +121,7 @@ public final class ItemStackUtil {
 		return stack;
 	}
 
-	public static ItemStack setFlags(ItemStack stack, ItemFlag... flags) {
+	public ItemStack setFlags(ItemStack stack, ItemFlag... flags) {
 		if (ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) {
 			final ItemMeta meta = stack.getItemMeta();
 			meta.addItemFlags(flags);
@@ -128,7 +130,7 @@ public final class ItemStackUtil {
 		return stack;
 	}
 
-	public static ItemStack removeFlags(ItemStack stack, ItemFlag... flags) {
+	public ItemStack removeFlags(ItemStack stack, ItemFlag... flags) {
 		if (ItemStackUtil.validate(stack,IStatus.HAS_MATERIAL)) {
 			final ItemMeta meta = stack.getItemMeta();
 			for (final ItemFlag flag : flags)
@@ -138,25 +140,25 @@ public final class ItemStackUtil {
 		return stack;
 	}
 
-	public static int getDamage(ItemStack stack) {
+	public int getDamage(ItemStack stack) {
 		if (ItemStackUtil.hasDurability(stack.getType()))
 			return ((Damageable)stack.getItemMeta()).getDamage();
 		return 0;
 	}
 
-	public static ItemFlag getFlagByName(String key) {
+	public ItemFlag getFlagByName(String key) {
 		for (final ItemFlag flag : ItemFlag.values())
 			if (flag.name().equalsIgnoreCase(key)) return flag;
 		return null;
 	}
 
-	public static void incrementDamage(ItemStack stack) { ItemStackUtil.setDamage(stack,ItemStackUtil.getDamage(stack)+1); }
-	public static void incrementDamage(ItemStack stack, int value) { ItemStackUtil.setDamage(stack,ItemStackUtil.getDamage(stack)+value); }
+	public void incrementDamage(ItemStack stack) { ItemStackUtil.setDamage(stack,ItemStackUtil.getDamage(stack)+1); }
+	public void incrementDamage(ItemStack stack, int value) { ItemStackUtil.setDamage(stack,ItemStackUtil.getDamage(stack)+value); }
 
-	public static void decrementDamage(ItemStack stack) { ItemStackUtil.setDamage(stack,ItemStackUtil.getDamage(stack)-1); }
-	public static void decrementDamage(ItemStack stack, int value) { ItemStackUtil.setDamage(stack,ItemStackUtil.getDamage(stack)-value); }
+	public void decrementDamage(ItemStack stack) { ItemStackUtil.setDamage(stack,ItemStackUtil.getDamage(stack)-1); }
+	public void decrementDamage(ItemStack stack, int value) { ItemStackUtil.setDamage(stack,ItemStackUtil.getDamage(stack)-value); }
 
-	public static boolean validate(ItemStack stack, IStatus status) {
+	public boolean validate(ItemStack stack, IStatus status) {
 		if ((stack == null) || (stack.getType() == Material.AIR))
 			return false;
 		if (status == IStatus.HAS_MATERIAL) return true;
@@ -181,7 +183,7 @@ public final class ItemStackUtil {
 		}
 	}
 
-	public static ItemStack setCustomModelData(ItemStack stack, int data) {
+	public ItemStack setCustomModelData(ItemStack stack, int data) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return stack;
 		final ItemMeta meta = stack.getItemMeta();
 
@@ -191,7 +193,7 @@ public final class ItemStackUtil {
 		return stack;
 	}
 
-	public static ItemStack setUnbreakable(ItemStack stack, boolean arg) {
+	public ItemStack setUnbreakable(ItemStack stack, boolean arg) {
 		if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return stack;
 		final ItemMeta meta = stack.getItemMeta();
 
@@ -202,43 +204,43 @@ public final class ItemStackUtil {
 		return stack;
 	}
 
-	public static boolean isHelmet		(Material mat) { return mat.name().contains("HELMET"); 		}
-	public static boolean isChestplate	(Material mat) { return mat.name().contains("CHESTPLATE"); 	}
-	public static boolean isLeggings	(Material mat) { return mat.name().contains("LEGGINGS");	}
-	public static boolean isBoots		(Material mat) { return mat.name().contains("BOOTS"); 		}
-	public static boolean isPickaxe		(Material mat) { return mat.name().contains("PICKAXE"); 	}
-	public static boolean isAxe			(Material mat) { return mat.name().contains("_AXE"); 		}
-	public static boolean isHoe			(Material mat) { return mat.name().contains("HOE"); 		}
-	public static boolean isSpade		(Material mat) { return (mat.name().contains("SPADE") || mat.name().contains("SHOVEL")); }
-	public static boolean isFishingRod	(Material mat) { return mat.name().contains("FISHING"); 	}
-	public static boolean isFlintSteel	(Material mat) { return mat.name().contains("_STEEL"); 		}
-	public static boolean isCarrotRod	(Material mat) { return mat.name().contains("CARROT_ON"); 	}
-	public static boolean isRanged		(Material mat) { return mat.name().contains("BOW"); 		}
-	public static boolean isElytra		(Material mat) { return mat.name().contains("ELYTRA"); 		}
-	public static boolean isShield		(Material mat) { return mat.name().contains("SHIELD"); 		}
-	public static boolean isSword		(Material mat) { return mat.name().contains("SWORD"); 		}
+	public boolean isHelmet		(Material mat) { return mat.name().contains("HELMET"); 		}
+	public boolean isChestplate	(Material mat) { return mat.name().contains("CHESTPLATE"); 	}
+	public boolean isLeggings	(Material mat) { return mat.name().contains("LEGGINGS");	}
+	public boolean isBoots		(Material mat) { return mat.name().contains("BOOTS"); 		}
+	public boolean isPickaxe		(Material mat) { return mat.name().contains("PICKAXE"); 	}
+	public boolean isAxe			(Material mat) { return mat.name().contains("_AXE"); 		}
+	public boolean isHoe			(Material mat) { return mat.name().contains("HOE"); 		}
+	public boolean isSpade		(Material mat) { return (mat.name().contains("SPADE") || mat.name().contains("SHOVEL")); }
+	public boolean isFishingRod	(Material mat) { return mat.name().contains("FISHING"); 	}
+	public boolean isFlintSteel	(Material mat) { return mat.name().contains("_STEEL"); 		}
+	public boolean isCarrotRod	(Material mat) { return mat.name().contains("CARROT_ON"); 	}
+	public boolean isRanged		(Material mat) { return mat.name().contains("BOW"); 		}
+	public boolean isElytra		(Material mat) { return mat.name().contains("ELYTRA"); 		}
+	public boolean isShield		(Material mat) { return mat.name().contains("SHIELD"); 		}
+	public boolean isSword		(Material mat) { return mat.name().contains("SWORD"); 		}
 
-	public static boolean isArmor(Material mat) {
+	public boolean isArmor(Material mat) {
 		return ItemStackUtil.isBoots(mat) || ItemStackUtil.isHelmet(mat) || ItemStackUtil.isChestplate(mat) || ItemStackUtil.isLeggings(mat);
 	}
 
-	public static boolean isTool(Material mat) {
+	public boolean isTool(Material mat) {
 		return ItemStackUtil.isHoe(mat) || ItemStackUtil.isSpade(mat) || ItemStackUtil.isAxe(mat) || ItemStackUtil.isPickaxe(mat);
 	}
 
-	public static boolean isAnotherTool(Material mat) {
+	public boolean isAnotherTool(Material mat) {
 		return ItemStackUtil.isCarrotRod(mat) || ItemStackUtil.isFlintSteel(mat) || ItemStackUtil.isFishingRod(mat);
 	}
 
-	public static boolean isWeapon(Material mat) {
+	public boolean isWeapon(Material mat) {
 		return ItemStackUtil.isSword(mat) || ItemStackUtil.isRanged(mat);
 	}
 
-	public static boolean hasDurability(Material mat) {
+	public boolean hasDurability(Material mat) {
 		return ItemStackUtil.isWeapon(mat) || ItemStackUtil.isArmor(mat) || ItemStackUtil.isAnotherTool(mat) || ItemStackUtil.isTool(mat);
 	}
 
-	private static ItemStack deserialize(String hash) {
+	private ItemStack deserialize(String hash) {
 		if (hash.equalsIgnoreCase("AIR:-1:0") || (Material.getMaterial(hash.split("&")[0].split(":")[0]) == null)) return new ItemStack(Material.AIR, 0);
 		if (ItemStackUtil.itemsCache.containsKey(hash))
 			return ItemStackUtil.itemsCache.get(hash);
@@ -353,7 +355,7 @@ public final class ItemStackUtil {
 		return item;
 	}
 
-	private static String serialize(ItemStack stack) {
+	private String serialize(ItemStack stack) {
 		final StringBuilder hash = new StringBuilder().append(stack == null ? "AIR:0:0" : stack.getType().toString() + ":");
 		if (stack != null) {
 			final int typeHash = ItemStackUtil.getDamage(stack);

@@ -2,11 +2,14 @@ package org.aslstd.api.bukkit.value.util;
 
 import java.util.Random;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * <p>MathUtil class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
+@UtilityClass
 public class MathUtil {
 
 	/**
@@ -14,7 +17,7 @@ public class MathUtil {
 	 *
 	 * @return a boolean
 	 */
-	public static boolean randomBoolean() {
+	public boolean randomBoolean() {
 		return new Random().nextDouble() > .5D;
 	}
 
@@ -25,7 +28,7 @@ public class MathUtil {
 	 * @param max a int
 	 * @return a int
 	 */
-	public static int getIntRandomRange(int min, int max) {
+	public int getIntRandomRange(int min, int max) {
 		return (int) getRandomRange(min, min);
 	}
 
@@ -36,7 +39,7 @@ public class MathUtil {
 	 * @param max a double
 	 * @return a double
 	 */
-	public static double getRandomRange(double min, double max) {
+	public double getRandomRange(double min, double max) {
 		if (min == max) return min;
 
 		if (min >= max) {
@@ -55,7 +58,7 @@ public class MathUtil {
 	 * @param inrease a double
 	 * @return a double
 	 */
-	public static double incrementByPercents(double value, double inrease) {
+	public double incrementByPercents(double value, double inrease) {
 		return (value + (value * (inrease / 100)));
 	}
 
@@ -66,7 +69,7 @@ public class MathUtil {
 	 * @param decrement a double
 	 * @return a double
 	 */
-	public static double decrementByPercents(double value, double decrement) {
+	public double decrementByPercents(double value, double decrement) {
 		return (value + (value * (decrement / 100)));
 	}
 
@@ -77,7 +80,7 @@ public class MathUtil {
 	 * @param percents a double
 	 * @return a double
 	 */
-	public static double getPercentsOfValue(double value, double percents) {
+	public double getPercentsOfValue(double value, double percents) {
 		return (value * (percents / 100));
 	}
 
@@ -90,7 +93,7 @@ public class MathUtil {
 	 * @param increment a {@link String} object
 	 * @return a {@link String} object
 	 */
-	public static String incrementRangeValue(String value, String increment) {
+	public String incrementRangeValue(String value, String increment) {
 		final String[] incSplit = increment.split("-");
 
 		if (NumUtil.isNumber(incSplit[0])) {
@@ -117,7 +120,7 @@ public class MathUtil {
 	 * @param percents a double
 	 * @return a {@link String} object
 	 */
-	public static String incrementRangeByPercents(String value, double percents) {
+	public String incrementRangeByPercents(String value, double percents) {
 		final double[] values = NumUtil.parseDouble(value.split("-"));
 		if (values.length == 1) return value;
 
@@ -134,7 +137,7 @@ public class MathUtil {
 	 * @param increment a double
 	 * @return a {@link String} object
 	 */
-	public static String incrementRangeValue(String value, double increment) {
+	public String incrementRangeValue(String value, double increment) {
 		final double[] values = NumUtil.parseDouble(value.split("-"));
 		if (values.length == 1) return value;
 

@@ -6,11 +6,14 @@ import java.util.List;
 import org.aslstd.api.bukkit.location.Vec3;
 import org.bukkit.block.Block;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * <p>BlockUtil class.</p>
  *
- * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
+ * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
+@UtilityClass
 public class BlockUtil {
 
 	/**
@@ -20,7 +23,7 @@ public class BlockUtil {
 	 * @param radius a int
 	 * @return a {@link List} object
 	 */
-	public static List<Block> getBlocksCuboid(Block target, int radius) {
+	public List<Block> getBlocksCuboid(Block target, int radius) {
 		final List<Block> blocks = new ArrayList<>();
 
 		if ((radius%2) == 0)
@@ -44,7 +47,7 @@ public class BlockUtil {
 	 * @param radius a int
 	 * @return a {@link List} object
 	 */
-	public static List<Block> getBlocksSquare(Block target, int radius) {
+	public List<Block> getBlocksSquare(Block target, int radius) {
 		final List<Block> blocks = new ArrayList<>();
 
 		if ((radius%2) == 0)

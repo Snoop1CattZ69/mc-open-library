@@ -21,47 +21,50 @@ import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class Listeners {
 
-	private static ConcurrentMap<String, Pair<BukkitListener,Plugin>> listeners = new ConcurrentHashMap<>();
+	private ConcurrentMap<String, Pair<BukkitListener,Plugin>> listeners = new ConcurrentHashMap<>();
 
-	public static void register() {
+	public void register() {
 		for (final Pair<BukkitListener,Plugin> value : listeners.values())
 			register(value);
 	}
 
-	public static void register(@NotNull String key) {
+	public void register(@NotNull String key) {
 		Obj.checkNull(key);
 		if (listeners.containsKey(key))
 			register(listeners.get(key));
 	}
 
-	public static void register(@NotNull Plugin plugin) {
+	public void register(@NotNull Plugin plugin) {
 		Obj.checkNull(plugin);
 		for (final Entry<String, Pair<BukkitListener,Plugin>> entry : listeners.entrySet())
 			if (entry.getValue().getSecond().equals(plugin))
 				register(entry.getValue());
 	}
 
-	public static void unregister() {
+	public void unregister() {
 		for (final Pair<BukkitListener,Plugin> value : listeners.values())
 			unregister(value);
 	}
 
-	public static void unregister(@NotNull String key) {
+	public void unregister(@NotNull String key) {
 		Obj.checkNull(key);
 		if (listeners.containsKey(key))
 			unregister(listeners.get(key));
 	}
 
-	public static void unregister(@NotNull Plugin plugin) {
+	public void unregister(@NotNull Plugin plugin) {
 		Obj.checkNull(plugin);
 		for (final Entry<String, Pair<BukkitListener,Plugin>> entry : listeners.entrySet())
 			if (entry.getValue().getSecond().equals(plugin))
 				unregister(entry.getValue());
 	}
 
-	public static @Nullable String add(@NotNull BukkitListener listener, @NotNull Plugin plugin) {
+	public @Nullable String add(@NotNull BukkitListener listener, @NotNull Plugin plugin) {
 		Obj.checkNull("listener and plugin cannot be a null", listener, plugin);
 		final Named name = listener.getClass().getAnnotation(Named.class);
 		String keyName = null;
@@ -75,31 +78,31 @@ public class Listeners {
 		return keyName;
 	}
 
-	public static @Nullable Pair<BukkitListener,Plugin> remove(@NotNull String key) {
+	public @Nullable Pair<BukkitListener,Plugin> remove(@NotNull String key) {
 		Obj.checkNull(key);
 		if (listeners.containsKey(key))
 			return listeners.remove(key);
 		return null;
 	}
 
-	public static void remove(@NotNull Plugin plugin) {
+	public void remove(@NotNull Plugin plugin) {
 		Obj.checkNull(plugin);
 		for (final Entry<String, Pair<BukkitListener,Plugin>> entry : listeners.entrySet())
 			if (entry.getValue().getSecond().equals(plugin))
 				listeners.remove(entry.getKey());
 	}
 
-	private static void register(@NotNull Pair<BukkitListener,Plugin> pair) {
+	private void register(@NotNull Pair<BukkitListener,Plugin> pair) {
 		Bukkit.getPluginManager().registerEvents(pair.getFirst(), pair.getSecond());
 		if (OpenLib.config().DEBUG_RUNNING)
 			Texts.debug("Loaded listener: " + pair.getFirst().getClass().getName());
 	}
 
-	private static void unregister(Pair<BukkitListener,Plugin> pair) {
+	private void unregister(Pair<BukkitListener,Plugin> pair) {
 		HandlerList.unregisterAll(pair.getFirst());
 	}
 
-	public static class Collector {
+	public class Collector {
 
 		private Plugin plugin;
 		private List<BukkitListener> listeners;
