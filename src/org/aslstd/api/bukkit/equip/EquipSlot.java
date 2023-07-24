@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 /**
  *  To get Id for HAND you must use {link ru.asl.api.openlib.entity.EPlayer#????}
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @AllArgsConstructor
 @Accessors(fluent = true)

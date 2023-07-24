@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * <p>Abstract OConf class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public abstract class OConf extends Yaml {
 

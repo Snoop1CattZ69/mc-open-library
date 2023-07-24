@@ -23,7 +23,7 @@ import net.kyori.adventure.text.TextComponent;
 /**
  * Will be included in ItemStackUtil in future
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public final class BasicMetaAdapter { // Basic Lore Adapter
 

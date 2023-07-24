@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * <p>TXTReader class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @RequiredArgsConstructor
 public final class TXTReader {

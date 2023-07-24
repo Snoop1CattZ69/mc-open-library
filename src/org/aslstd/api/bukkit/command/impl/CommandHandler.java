@@ -24,7 +24,7 @@ import lombok.experimental.Accessors;
 /**
  * <p>Abstract BasicCommandHandler class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @Accessors(fluent = true)
 public class CommandHandler implements Handler {

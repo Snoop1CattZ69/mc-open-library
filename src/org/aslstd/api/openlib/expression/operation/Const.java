@@ -8,7 +8,7 @@ import org.aslstd.api.openlib.expression.CommonExpression;
 /**
  * <p>Const class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class Const implements CommonExpression {
 	private final Number num;

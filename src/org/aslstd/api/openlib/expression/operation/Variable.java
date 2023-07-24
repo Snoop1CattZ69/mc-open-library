@@ -8,7 +8,7 @@ import org.aslstd.api.openlib.expression.CommonExpression;
 /**
  * <p>Variable class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class Variable implements CommonExpression {
 	private final String name;

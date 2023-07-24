@@ -5,7 +5,7 @@ import org.bukkit.command.CommandSender;
 /**
  * <p>Usable interface.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @FunctionalInterface
 public interface Executor {

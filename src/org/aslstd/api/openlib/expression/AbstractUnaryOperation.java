@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * <p>Abstract AbstractUnaryOperation class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public abstract class AbstractUnaryOperation implements CommonExpression {
 	private final EnumUnaryOperation op;

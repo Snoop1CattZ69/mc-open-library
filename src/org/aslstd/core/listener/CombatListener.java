@@ -15,7 +15,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 /**
  * <p>CombatListener class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @Named(key = "combatEventCustom")
 public class CombatListener implements BukkitListener {

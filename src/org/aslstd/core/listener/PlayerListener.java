@@ -21,7 +21,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /**
  * <p>PlayerListener class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @Named(key = "playerJoin")
 public class PlayerListener implements BukkitListener {

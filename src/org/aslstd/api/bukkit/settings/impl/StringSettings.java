@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * <p>StringSettings class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class StringSettings extends Settings<String> {
 

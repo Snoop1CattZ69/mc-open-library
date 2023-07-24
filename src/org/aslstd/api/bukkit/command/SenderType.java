@@ -3,7 +3,7 @@ package org.aslstd.api.bukkit.command;
 /**
  * <p>SenderType class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public enum SenderType {
 	ALL,

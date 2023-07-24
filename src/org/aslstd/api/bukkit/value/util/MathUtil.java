@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * <p>MathUtil class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class MathUtil {
 

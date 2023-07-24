@@ -4,7 +4,7 @@ package org.aslstd.api.bukkit.location;
 /**
  * <p>Direction class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public enum Direction {
 	XZ(Vec3.of(1,0,1)),

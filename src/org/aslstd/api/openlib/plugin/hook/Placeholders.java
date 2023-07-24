@@ -16,7 +16,7 @@ import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 /**
  * <p>Abstract PAPI class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @Accessors(fluent = true)
 public abstract class Placeholders extends PlaceholderExpansion {

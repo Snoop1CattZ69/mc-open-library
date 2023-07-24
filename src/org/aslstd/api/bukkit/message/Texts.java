@@ -26,7 +26,7 @@ import lombok.Setter;
 /**
  * <p>EText class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @SuppressWarnings("deprecation")
 public class Texts {

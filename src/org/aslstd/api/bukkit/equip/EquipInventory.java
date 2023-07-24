@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * <p>EquipInventory class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class EquipInventory {
 

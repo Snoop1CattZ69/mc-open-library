@@ -8,7 +8,7 @@ import org.aslstd.api.openlib.expression.exception.OverflowException;
 /**
  * <p>Expression interface.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public interface Expression extends ToMiniString {
 	/**

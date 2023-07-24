@@ -7,7 +7,7 @@ import org.bukkit.command.TabCompleter;
 /**
  * <p>CommandHandler interface.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public interface Handler extends CommandExecutor, TabCompleter {
 

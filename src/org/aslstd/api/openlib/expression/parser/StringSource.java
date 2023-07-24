@@ -3,7 +3,7 @@ package org.aslstd.api.openlib.expression.parser;
 /**
  * <p>StringSource class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class StringSource implements ExpressionSource {
 	final String data;

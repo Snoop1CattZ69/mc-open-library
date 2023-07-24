@@ -13,7 +13,7 @@ import lombok.Setter;
 /**
  * <p>PlayerBlockMoveEvent class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class PlayerBlockMoveEvent extends PlayerEvent implements Cancellable {
 	private static final HandlerList HANDLERS = new HandlerList();

@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 /**
  * <p>EntityUtil class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public final class EntityUtil {
 

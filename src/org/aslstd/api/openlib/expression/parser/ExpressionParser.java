@@ -26,7 +26,7 @@ import org.aslstd.api.openlib.expression.operation.Variable;
 /**
  * <p>ExpressionParser class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class ExpressionParser extends BaseParser implements Parser {
 	final static int MAX_LEVEL = levels.size() - 1;

@@ -8,7 +8,7 @@ import lombok.Getter;
 /**
  * <p>ServerVersion class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public final class ServerVersion {
 

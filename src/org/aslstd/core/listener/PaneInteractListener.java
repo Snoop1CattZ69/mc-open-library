@@ -20,7 +20,7 @@ import org.bukkit.inventory.PlayerInventory;
 /**
  * <p>PaneInteractListener class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @Named(key = "paneInteract")
 public class PaneInteractListener implements BukkitListener {

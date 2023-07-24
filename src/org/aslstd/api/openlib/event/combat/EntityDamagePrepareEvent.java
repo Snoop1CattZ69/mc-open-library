@@ -14,7 +14,7 @@ import lombok.Setter;
 /**
  * <p>EntityDamagePrepareEvent class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @AllArgsConstructor
 public class EntityDamagePrepareEvent extends Event {

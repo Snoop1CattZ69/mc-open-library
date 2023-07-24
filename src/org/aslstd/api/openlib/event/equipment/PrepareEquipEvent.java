@@ -13,7 +13,7 @@ import lombok.Getter;
 /**
  * <p>EquipChangeEvent class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @AllArgsConstructor
 public class PrepareEquipEvent extends Event {

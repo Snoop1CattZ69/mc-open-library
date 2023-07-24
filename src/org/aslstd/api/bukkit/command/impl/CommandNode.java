@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 /**
  * <p>BasicCommand class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @Accessors(fluent = true)
 public class CommandNode implements OCommand {

@@ -26,7 +26,7 @@ import lombok.Getter;
 /**
  * Basic wrapper for default .yml files
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public class Yaml {
 

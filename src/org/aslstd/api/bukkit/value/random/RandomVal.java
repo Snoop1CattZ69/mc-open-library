@@ -5,7 +5,7 @@ import org.aslstd.api.bukkit.value.Value;
 /**
  * <p>RandomValue interface.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 public interface RandomVal {
 

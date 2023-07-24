@@ -3,7 +3,7 @@ package org.aslstd.api.openlib.attributes;
 /**
  * Enum collection of attributes calculating types.
  *
- * @author Snoopy
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
 
  */
 public enum AttrType {

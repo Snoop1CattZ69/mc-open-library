@@ -15,7 +15,7 @@ import lombok.Setter;
 /**
  * <p>CombatEvent class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @AllArgsConstructor()
 public class CombatEvent extends Event implements Cancellable {

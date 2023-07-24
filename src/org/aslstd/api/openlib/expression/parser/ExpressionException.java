@@ -3,7 +3,7 @@ package org.aslstd.api.openlib.expression.parser;
 /**
  * <p>ExpressionException class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @SuppressWarnings("serial")
 public class ExpressionException extends RuntimeException {

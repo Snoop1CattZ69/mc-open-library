@@ -9,7 +9,7 @@ import lombok.Setter;
 /**
  * <p>Pair class.</p>
  *
- * @author Snoop1CattZ69
+ * @author Snoop1CattZ69 (https://github.com/Snoop1CattZ69)
  */
 @AllArgsConstructor
 public class Pair<T1, T2> {
