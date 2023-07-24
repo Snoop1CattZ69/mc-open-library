@@ -11,12 +11,11 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import javax.annotation.Nonnull;
-
 import org.aslstd.api.bukkit.message.Texts;
 import org.aslstd.api.bukkit.yaml.Yaml;
 import org.aslstd.api.openlib.lambda.PrConsumer;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import com.google.common.collect.ForwardingMap;
 
@@ -91,7 +90,7 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 		}
 	}
 
-	public ElementsCollector<V> generateDefaults(@Nonnull List<String> paths, JavaPlugin container) {
+	public ElementsCollector<V> generateDefaults(@NotNull List<String> paths, JavaPlugin container) {
 		this.defaults = paths;
 		this.plugin = container;
 		return this;
@@ -105,7 +104,7 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 	@Override
 	protected Map<String,V> delegate() { return map; }
 
-	public static <V> ElementsCollector<V> of(@Nonnull Class<V> clazz) {
+	public static <V> ElementsCollector<V> of(@NotNull Class<V> clazz) {
 		return new ElementsCollector<>(new ConcurrentHashMap<String, V>(), clazz);
 	}
 }
