@@ -22,6 +22,7 @@ import com.google.common.collect.ForwardingMap;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.SneakyThrows;
 import lombok.experimental.Accessors;
 
 @Accessors(chain = true, fluent = true)
@@ -36,18 +37,19 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 	private JavaPlugin plugin;
 
 	protected ElementsCollector(ConcurrentMap<String, V> map, Class<V> clazz) {
-		this.map = map;
-
 		try {
 			constructor = clazz.getConstructor(String.class, Yaml.class);
+			this.map = map;
 		} catch (NoSuchMethodException | SecurityException e) {
-			Texts.warn("Constructor " + clazz.getName() + "(String, Yaml) was not found");
+			Texts.warn("Constructor " + clazz.getName() + "(java.lang.String, org.aslstd.api.bukkit.yaml.Yaml) was not found");
 			e.printStackTrace();
 		}
 	}
 
 	@SuppressWarnings("unchecked")
+	@SneakyThrows(IllegalStateException.class)
 	public void collect() {
+		if (this.map == null) throw new IllegalStateException("ElementsCollector not initialized, check issues above");
 		if (rootFolder == null) {
 			Texts.warn("rootFolder is null for ElementsStorage, please use rootFolder(File) method before collect()");
 			return;
@@ -90,13 +92,17 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 		}
 	}
 
+	@SneakyThrows(IllegalStateException.class)
 	public ElementsCollector<V> generateDefaults(@NotNull List<String> paths, JavaPlugin container) {
+		if (this.map == null) throw new IllegalStateException("ElementsCollector not initialized, check issues above");
 		this.defaults = paths;
 		this.plugin = container;
 		return this;
 	}
 
+	@SneakyThrows(IllegalStateException.class)
 	public ElementsCollector<V> executeForObject(PrConsumer<V> func) {
+		if (this.map == null) throw new IllegalStateException("ElementsCollector not initialized, check issues above");
 		this.func = func;
 		return this;
 	}
