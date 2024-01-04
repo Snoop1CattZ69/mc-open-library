@@ -170,11 +170,12 @@
 	<dependencies>
 
 		<!-- Compile Project: EffectLib -->
-		<dependency>
-			<groupId>com.elmakers.mine.bukkit</groupId>
-			<artifactId>EffectLib</artifactId>
-			<version>10.2-20230705.200600-2</version>
-		</dependency>
+        <dependency>
+            <groupId>com.elmakers.mine.bukkit</groupId>
+            <artifactId>EffectLib</artifactId>
+            <version>10.2-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
 		<!-- Compile Project: BStats -->
 		<dependency>
@@ -306,10 +307,10 @@
 		</repository>
 
 		<!-- EffectLib -->
-		<repository>
-			<id>grandwork</id>
-			<url>https://repo.zoommax.ru/repository/grandwork/</url>
-		</repository>
+        <repository>
+            <id>elMakers</id>
+            <url>http://maven.elmakers.com/repository/</url>
+        </repository>
 
 		<!-- Item-NBT-API -->
 		<repository>
