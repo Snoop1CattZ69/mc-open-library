@@ -18,7 +18,7 @@ public class WorkerService {
 
 	protected ScheduledExecutorService milkyWay;
 	protected ExecutorService andromeda;
-	public boolean andomedaAvailable() {
+	public boolean andromedaAvailable() {
 		return andromeda != null;
 	}
 
