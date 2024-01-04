@@ -1,6 +1,8 @@
 mol:
+  # Changing main command label/aliases requires to fully restart your server
   command-label: mol
   command-aliases: 'molib, openlib, openlibrary'
+  # All subcommands options can be changed and overrided by using /mol reload
   subcommands:
     help:
       command-name: help
@@ -10,8 +12,7 @@ mol:
       sender-type: ALL
     dump:
       command-name: dump
-      description: Dumps all stored player settings into 'yml' file which is located in
-        the plugin root folder
+      description: Dumps all stored player settings into 'yml' file which is located in the plugin root folder
       permission: mol.command.dump
       usage-args: ''
       sender-type: ALL

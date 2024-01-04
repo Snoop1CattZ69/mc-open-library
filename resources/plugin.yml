@@ -3,7 +3,7 @@ version: ${project.version}-${releaseStatus}
 description: ''
 author: Snoop1CattZ69
 authors: [Snoop1CattZ69, ASL std.]
-website:  https://discord.aslstd.org/
+website: https://discord.aslstd.org/
 
 api-version: 1.16
 
