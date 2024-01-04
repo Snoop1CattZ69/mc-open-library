@@ -3,8 +3,8 @@ package org.aslstd.core.config;
 import java.util.Collections;
 import java.util.List;
 
+import org.aslstd.api.bukkit.file.yaml.OConf;
 import org.aslstd.api.bukkit.message.Texts;
-import org.aslstd.api.bukkit.yaml.OConf;
 import org.aslstd.api.openlib.plugin.OpenPlugin;
 
 /**

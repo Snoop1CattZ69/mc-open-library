@@ -10,10 +10,8 @@ import org.bukkit.inventory.InventoryHolder;
 /**
  * <p>Pane interface.</p>
  *
- * @deprecated Will be removed after new inventory framework will be completed
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-@Deprecated(since = "1.0.1", forRemoval = true)
 public interface Pane extends InventoryHolder {
 
 	/**
@@ -41,7 +39,7 @@ public interface Pane extends InventoryHolder {
 
 	Page getPage();
 
-	default boolean isReturnItems() {
+	default boolean returnItems() {
 		return false;
 	}
 
@@ -52,7 +50,7 @@ public interface Pane extends InventoryHolder {
 	 * @param event a {@link org.bukkit.event.inventory.InventoryCloseEvent} object
 	 */
 	default void returnItems(Player player, InventoryCloseEvent event) {
-		if (isReturnItems()) {
+		if (returnItems()) {
 			if (getPage().getUnlocked().isEmpty()) return;
 			getPage().getUnlocked().stream()
 			.filter(i -> event.getView().getTopInventory().getItem(i) != null)

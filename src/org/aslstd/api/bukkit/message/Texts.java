@@ -11,8 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.aslstd.api.bukkit.entity.pick.Pick;
+import org.aslstd.api.bukkit.file.yaml.Yaml;
 import org.aslstd.api.bukkit.settings.Settings;
-import org.aslstd.api.bukkit.yaml.Yaml;
 import org.aslstd.api.openlib.player.OPlayer;
 import org.aslstd.core.OpenLib;
 import org.bukkit.Bukkit;
@@ -112,7 +112,7 @@ public class Texts {
 		dumpFile(pl.options().tempStore(), OpenLib.instance());
 	}
 
-	{
+	static {
 		df = new DecimalFormat();
 
 		df.setDecimalFormatSymbols(new DecimalFormatSymbols(new Locale("en", "US")));

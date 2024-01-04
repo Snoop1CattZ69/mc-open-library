@@ -1,7 +1,7 @@
 package org.aslstd.api.openlib.player;
 
 import org.aslstd.api.bukkit.settings.Settings;
-import org.aslstd.api.bukkit.settings.impl.StringSettings;
+import org.aslstd.api.bukkit.settings.impl.FileSettings;
 import org.aslstd.api.bukkit.value.ValuePair;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,8 +12,8 @@ import lombok.experimental.Accessors;
 public final class Options {
 
 	@Getter private Settings<Double> tempStore = new Settings<>();
-	@Getter private StringSettings tempData = new StringSettings();
-	@Getter private StringSettings data = new StringSettings();
+	@Getter private FileSettings tempData = new FileSettings();
+	@Getter private FileSettings data = new FileSettings();
 
 	private OPlayer player;
 

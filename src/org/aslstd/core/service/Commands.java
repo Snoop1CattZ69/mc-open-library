@@ -17,15 +17,15 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Commands {
 
-	private Field cmdMap;
+	private Field cm;
 	private SimpleCommandMap scm;
 	private Constructor<PluginCommand> pcC;
 
-	{
+	static {
 		try {
-			cmdMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-			cmdMap.setAccessible(true);
-			scm = (SimpleCommandMap) cmdMap.get(Bukkit.getServer());
+			cm = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+			cm.setAccessible(true);
+			scm = (SimpleCommandMap) cm.get(Bukkit.getServer());
 
 			pcC = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
 			pcC.setAccessible(true);
@@ -38,28 +38,29 @@ public class Commands {
 
 	public final void registerCommand(Plugin plugin, CommandHandler command) {
 		try {
-			final PluginCommand cmd = pcC.newInstance(command.label().toLowerCase(), plugin);
+			final PluginCommand pluginCommand = pcC.newInstance(command.label().toLowerCase(), plugin);
 
-			cmd.setExecutor(command);
-			cmd.setTabCompleter(command);
+			pluginCommand.setExecutor(command);
+			pluginCommand.setTabCompleter(command);
 			if (command.aliases() != null)
-				cmd.setAliases(Arrays.asList(command.aliases()));
-			registerBukkitCommand(cmd);
+				pluginCommand.setAliases(Arrays.asList(command.aliases()));
+			registerBukkitCommand(command.defLabel(), pluginCommand);
 		} catch (IllegalAccessException | InstantiationException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public final void unregisterBukkitCommand(Plugin plugin, CommandHandler handler) {
-		synchronized (scm) {
-			Bukkit.getPluginCommand(handler.label()).unregister(scm);
-		}
+		Bukkit.getPluginCommand(handler.label()).unregister(scm);
 	}
 
+	@Deprecated(forRemoval = true)
 	private void registerBukkitCommand(PluginCommand cmd) {
-		synchronized (scm) {
-			scm.register(cmd.getName().toLowerCase(), cmd);
-		}
+		scm.register(cmd.getName().toLowerCase(), cmd);
+	}
+
+	private void registerBukkitCommand(String defLabel, PluginCommand cmd) {
+		scm.register(cmd.getName().toLowerCase(), cmd);
 	}
 
 }

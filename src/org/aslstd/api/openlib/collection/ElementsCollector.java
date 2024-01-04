@@ -11,9 +11,9 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import org.aslstd.api.bukkit.file.yaml.Yaml;
 import org.aslstd.api.bukkit.message.Texts;
-import org.aslstd.api.bukkit.yaml.Yaml;
-import org.aslstd.api.openlib.lambda.PrConsumer;
+import org.aslstd.api.openlib.lambda.PrdConsumer;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,12 +33,13 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 
 	@Getter private Constructor<?> constructor;
 	private List<String> defaults;
-	private PrConsumer<V> func;
+	private PrdConsumer<V> func;
 	private JavaPlugin plugin;
 
 	protected ElementsCollector(ConcurrentMap<String, V> map, Class<V> clazz) {
 		try {
-			constructor = clazz.getConstructor(String.class, Yaml.class);
+			constructor = clazz.getDeclaredConstructor(String.class, Yaml.class);
+			constructor.setAccessible(true);
 			this.map = map;
 		} catch (NoSuchMethodException | SecurityException e) {
 			Texts.warn("Constructor " + clazz.getName() + "(java.lang.String, org.aslstd.api.bukkit.yaml.Yaml) was not found");
@@ -101,7 +102,7 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 	}
 
 	@SneakyThrows(IllegalStateException.class)
-	public ElementsCollector<V> executeForObject(PrConsumer<V> func) {
+	public ElementsCollector<V> executeForObject(PrdConsumer<V> func) {
 		if (this.map == null) throw new IllegalStateException("ElementsCollector not initialized, check issues above");
 		this.func = func;
 		return this;

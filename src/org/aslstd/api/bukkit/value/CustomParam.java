@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.WordUtils;
+import org.aslstd.api.bukkit.file.yaml.Yaml;
 import org.aslstd.api.bukkit.message.Texts;
-import org.aslstd.api.bukkit.yaml.Yaml;
 
 import lombok.Getter;
 

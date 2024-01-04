@@ -7,9 +7,9 @@ import org.aslstd.api.bukkit.command.OCommand;
 import org.aslstd.api.bukkit.command.impl.CommandHandler;
 import org.aslstd.api.bukkit.command.impl.CommandNode;
 import org.aslstd.api.bukkit.entity.pick.Pick;
+import org.aslstd.api.bukkit.file.yaml.Yaml;
 import org.aslstd.api.bukkit.message.Texts;
-import org.aslstd.api.bukkit.yaml.Yaml;
-import org.aslstd.api.openlib.plugin.hook.Placeholders;
+import org.aslstd.api.openlib.plugin.hook.Hooks;
 import org.aslstd.core.OpenLib;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -71,7 +71,7 @@ public class CoreCommandHandler extends CommandHandler {
 			return null;
 		}));
 
-		if (Placeholders.enabled())
+		if (Hooks.placeholderapi())
 			attachNode(new CommandNode(this, "data", 4, (s, args) -> {
 				switch (args.arg(0).toLowerCase()) {
 					case "player":

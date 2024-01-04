@@ -18,10 +18,8 @@ import net.kyori.adventure.text.TextComponent;
 /**
  * <p>SimpleElement class.</p>
  *
- * @deprecated Will be removed after new inventory framework will be completed
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-@Deprecated(since = "1.0.1", forRemoval = true)
 public class SimpleElement implements Element {
 
 	@Getter private final String				hash;

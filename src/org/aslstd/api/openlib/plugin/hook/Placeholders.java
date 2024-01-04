@@ -3,7 +3,6 @@ package org.aslstd.api.openlib.plugin.hook;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,10 +22,8 @@ public abstract class Placeholders extends PlaceholderExpansion {
 
 	@Getter private static final ConcurrentMap<String, PlaceholderExpansion> preRegister = new ConcurrentHashMap<>();
 
-	@Getter private static final boolean enabled = Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI");
-
 	public static final String parseBracketPlaceholders(OfflinePlayer target, String text) {
-		if (!enabled)
+		if (!Hooks.placeholderapi())
 			throw new IllegalStateException(
 					"This error appear because something tries to use method, "
 							+ "but PlaceholderAPI not installed, "
@@ -37,7 +34,7 @@ public abstract class Placeholders extends PlaceholderExpansion {
 	}
 
 	public static final String parsePlaceholders(OfflinePlayer target, String text) {
-		if (!enabled)
+		if (!Hooks.placeholderapi())
 			throw new IllegalStateException(
 					"This error appear because something tries to use method, "
 							+ "but PlaceholderAPI not installed, "

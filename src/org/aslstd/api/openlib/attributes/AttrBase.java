@@ -3,9 +3,9 @@ package org.aslstd.api.openlib.attributes;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.WordUtils;
+import org.aslstd.api.bukkit.file.yaml.Yaml;
 import org.aslstd.api.bukkit.message.Texts;
 import org.aslstd.api.bukkit.value.ValuePair;
-import org.aslstd.api.bukkit.yaml.Yaml;
 import org.aslstd.core.OpenLib;
 import org.bukkit.Keyed;
 import org.bukkit.NamespacedKey;

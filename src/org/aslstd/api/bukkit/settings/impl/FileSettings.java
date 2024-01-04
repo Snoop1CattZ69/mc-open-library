@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.aslstd.api.bukkit.file.yaml.Yaml;
 import org.aslstd.api.bukkit.settings.Settings;
-import org.aslstd.api.bukkit.yaml.Yaml;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
  *
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-public class StringSettings extends Settings<String> {
+public class FileSettings extends Settings<String> {
 
 	/**
 	 * <p>importArray.</p>

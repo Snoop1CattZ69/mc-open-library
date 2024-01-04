@@ -7,11 +7,11 @@ import java.util.Map.Entry;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
+import org.aslstd.api.bukkit.file.yaml.Yaml;
 import org.aslstd.api.bukkit.items.IStatus;
 import org.aslstd.api.bukkit.items.ItemStackUtil;
 import org.aslstd.api.bukkit.message.Texts;
 import org.aslstd.api.bukkit.value.util.ArrayUtil;
-import org.aslstd.api.bukkit.yaml.Yaml;
 import org.aslstd.api.openlib.inventory.Chest;
 import org.aslstd.api.openlib.inventory.element.SimpleElement;
 import org.bukkit.Bukkit;
@@ -29,10 +29,8 @@ import lombok.Getter;
 import net.kyori.adventure.text.Component;
 
 /**
- * @deprecated Will be removed after new inventory framework will be completed
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-@Deprecated(since = "1.0.1", forRemoval = true)
 public class MultiPageChestStorage implements Chest {
 
 	public static final ItemStack EMPTY = new ItemStack(Material.AIR, 1);

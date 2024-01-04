@@ -20,10 +20,8 @@ import lombok.Setter;
 /**
  * <p>LockedPage class.</p>
  *
- * @deprecated Will be removed after new inventory framework will be completed
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-@Deprecated(since = "1.0.1", forRemoval = true)
 public class LockedPage implements Page {
 
 	private final Element[][] elements;
@@ -169,12 +167,14 @@ public class LockedPage implements Page {
 	@Override
 	public boolean add(Element element, int locX, int locY, boolean force) {
 		if (isInBounds(locX, locY))
-			if (elements[locX][locY].equals(Element.empty()) && !force) {
+			if (force) {
 				elements[locX][locY] = element;
 				return true;
 			} else {
-				elements[locX][locY] = element;
-				return true;
+				if (elements[locX][locY].equals(Element.empty())) {
+					elements[locX][locY] = element;
+					return true;
+				}
 			}
 		return false;
 	}
@@ -306,7 +306,7 @@ public class LockedPage implements Page {
 	@Override
 	public int width() { return elements.length; }
 
-	private boolean isInBounds(int locX, int locY) {
+	protected boolean isInBounds(int locX, int locY) {
 		return locX < width() && locY < height() && locX >= 0 && locY >= 0;
 	}
 

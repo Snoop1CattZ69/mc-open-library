@@ -16,7 +16,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * <p>PlayerListener class.</p>
@@ -33,25 +32,20 @@ public class PlayerListener implements BukkitListener {
 	 */
 	@EventHandler
 	public void registerEPlayer(PlayerJoinEvent e) {
-		new BukkitRunnable() {
+		OpenLib.scheduler().schedule(OpenLib.instance(), e.getPlayer(), () -> {
+			final OPlayer p = Pick.of(e.getPlayer());
 
-			@Override
-			public void run() {
-				final OPlayer p = Pick.of(e.getPlayer());
+			for (final EquipSlot slot : EquipSlot.values())
+				Bukkit.getServer().getPluginManager().callEvent(new PrepareEquipEvent(slot, EquipSlot.get(slot, e.getPlayer()), e.getPlayer()));
 
-				for (final EquipSlot slot : EquipSlot.values())
-					Bukkit.getServer().getPluginManager().callEvent(new PrepareEquipEvent(slot, EquipSlot.get(slot, e.getPlayer()), e.getPlayer()));
+			for (final String param : OpenLib.config().PLAYER_DATA_DEFAULTS) {
+				final String[] data = param.split(":");
+				if (data.length < 2) return;
 
-				for (final String param : OpenLib.config().PLAYER_DATA_DEFAULTS) {
-					final String[] data = param.split(":");
-					if (data.length < 2) return;
-
-					if (!p.options().checkData(data[0]))
-						p.options().writeData(data[0], data[1]);
-				}
+				if (!p.options().checkData(data[0]))
+					p.options().writeData(data[0], data[1]);
 			}
-
-		}.runTask(OpenLib.instance());
+		});
 
 		if (e.getPlayer().isOp() || e.getPlayer().hasPermission("*"))
 			CheckUpdates.sendUpdateMessage(e.getPlayer());

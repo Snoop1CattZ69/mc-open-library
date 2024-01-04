@@ -1,4 +1,4 @@
-package org.aslstd.api.bukkit.yaml;
+package org.aslstd.api.bukkit.file.yaml;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,7 +11,6 @@ import java.util.Set;
 
 import org.aslstd.api.bukkit.message.Texts;
 import org.aslstd.core.OpenLib;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -21,26 +20,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.yaml.snakeyaml.DumperOptions;
 
-import lombok.Getter;
-
 /**
  * Basic wrapper for default .yml files
  *
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
 public class Yaml {
-
-	@Getter private static final Yaml mainConfig;
-
-	static {
-
-		final JavaPlugin plugin = (JavaPlugin) Bukkit.getPluginManager().getPlugin("ejCore");
-
-		if (plugin != null)
-			mainConfig = new Yaml("plugins/ejCore/config.yml");
-		else
-			mainConfig = null;
-	}
 
 	protected YamlConfiguration	yaml	= new YamlConfiguration();
 	protected File				file;

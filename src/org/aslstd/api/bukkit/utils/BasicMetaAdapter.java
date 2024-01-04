@@ -6,8 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import javax.annotation.Nonnull;
-
 import org.aslstd.api.bukkit.items.IStatus;
 import org.aslstd.api.bukkit.items.ItemStackUtil;
 import org.aslstd.api.bukkit.message.Texts;
@@ -16,6 +14,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.Nullable;
 
 import lombok.experimental.UtilityClass;
 import net.kyori.adventure.text.Component;
@@ -38,7 +37,7 @@ public class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param stack a {@link org.bukkit.inventory.ItemStack} object
 	 * @return a {@link String} object
 	 */
-	public @Nonnull String getStringValue(Pattern patt, ItemStack stack) {
+	public @Nullable String getStringValue(Pattern patt, ItemStack stack) {
 		if  (!ItemStackUtil.validate(stack, IStatus.HAS_LORE)) return "";
 		return getStringValue(patt, stack.getItemMeta().lore().toString() );
 	}
@@ -50,7 +49,7 @@ public class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param lore a {@link List} object
 	 * @return a {@link String} object
 	 */
-	public @Nonnull String getStringValue(Pattern patt, List<Component> lore) {
+	public @Nullable String getStringValue(Pattern patt, List<Component> lore) {
 		String value = "";
 		if (contains(lore, patt)) {
 			matcher = patt.matcher(Texts.e(lore.toString()).toLowerCase());
@@ -259,7 +258,9 @@ public class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param patt a {@link java.util.regex.Pattern} object
 	 * @return a boolean
 	 */
-	public boolean contains(String loreString, Pattern patt) { return patt.matcher(Texts.e(loreString).toLowerCase()).find(); }
+	public boolean contains(String loreString, Pattern patt) {
+		return patt.matcher(Texts.e(loreString).toLowerCase()).find();
+	}
 	/**
 	 * <p>contains.</p>
 	 *
@@ -267,7 +268,9 @@ public class BasicMetaAdapter { // Basic Lore Adapter
 	 * @param patt a {@link java.util.regex.Pattern} object
 	 * @return a boolean
 	 */
-	public boolean contains(List<Component> lore, Pattern patt) { return patt.matcher(Texts.e(lore.toString()).toLowerCase()).find(); }
+	public boolean contains(List<Component> lore, Pattern patt) {
+		return patt.matcher(Texts.e(lore.toString()).toLowerCase()).find();
+	}
 	/**
 	 * <p>contains.</p>
 	 *

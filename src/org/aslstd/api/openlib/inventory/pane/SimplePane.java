@@ -19,10 +19,8 @@ import net.kyori.adventure.text.Component;
 /**
  * <p>SimplePane class.</p>
  *
- * @deprecated Will be removed after new inventory framework will be completed
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-@Deprecated(since = "1.0.1", forRemoval = true)
 public class SimplePane implements Pane {
 	/* Заглушка */
 	/** {@inheritDoc} */
@@ -91,7 +89,7 @@ public class SimplePane implements Pane {
 		Arrays.asList(players).stream()
 		.filter(p -> p != null)
 		.forEach(p -> {
-			Bukkit.getScheduler().scheduleSyncDelayedTask(OpenLib.instance(), () -> {
+			OpenLib.scheduler().schedule(OpenLib.instance(), p, () -> {
 				p.closeInventory(); p.openInventory(inventory);
 			});
 		});

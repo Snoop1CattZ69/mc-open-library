@@ -1,4 +1,4 @@
-package org.aslstd.api.bukkit.yaml;
+package org.aslstd.api.bukkit.file.yaml;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

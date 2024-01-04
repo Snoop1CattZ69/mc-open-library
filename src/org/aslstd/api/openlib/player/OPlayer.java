@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import org.aslstd.api.bukkit.entity.pick.UPlayer;
 import org.aslstd.api.bukkit.equip.EquipInventory;
+import org.aslstd.api.bukkit.file.yaml.Yaml;
 import org.aslstd.api.bukkit.storage.PlayerFileStorage;
-import org.aslstd.api.bukkit.yaml.Yaml;
 import org.aslstd.api.openlib.collection.Stash;
 import org.aslstd.core.OpenLib;
 import org.bukkit.Bukkit;

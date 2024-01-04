@@ -1,6 +1,5 @@
 package org.aslstd.core.listener;
 
-import org.aslstd.api.bukkit.entity.pick.Pick;
 import org.aslstd.api.bukkit.items.InventoryUtil;
 import org.aslstd.api.openlib.inventory.Chest;
 import org.aslstd.api.openlib.inventory.Pane;
@@ -23,6 +22,7 @@ import org.bukkit.inventory.PlayerInventory;
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
 @Named(key = "paneInteract")
+@SuppressWarnings("removal")
 public class PaneInteractListener implements BukkitListener {
 
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -40,7 +40,7 @@ public class PaneInteractListener implements BukkitListener {
 				return;
 			}
 
-			final Player whoClicked = (Player)Pick.of(event.getWhoClicked());
+			final Player whoClicked = (Player)event.getWhoClicked();
 
 			event.setCancelled(true);
 

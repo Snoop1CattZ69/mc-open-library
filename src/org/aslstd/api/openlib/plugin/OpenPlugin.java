@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.aslstd.api.bukkit.file.yaml.OConf;
 import org.aslstd.api.bukkit.message.Texts;
-import org.aslstd.api.bukkit.yaml.OConf;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,6 +28,11 @@ public abstract class OpenPlugin extends JavaPlugin {
 	@Getter @Setter protected int latestBuild;
 
 	@Getter @Setter protected String latestVersion;
+
+	@Override
+	public void onLoad() {
+		preLoad();
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -63,6 +68,8 @@ public abstract class OpenPlugin extends JavaPlugin {
 	 * @return a int
 	 */
 	public int getPriority() { return 10; }
+
+	public void preLoad() {}
 
 	/**
 	 * <p>preInit.</p>

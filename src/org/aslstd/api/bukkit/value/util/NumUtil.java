@@ -40,7 +40,7 @@ public class NumUtil {
 		}
 	}
 
-	public boolean isNumberDistance(String value) {
+	public boolean isNumberRange(String value) {
 		if (value.contains("-")) {
 			final String[] s = value.split("-");
 			if (s.length <= 1 || s.length > 2) return false;

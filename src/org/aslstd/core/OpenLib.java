@@ -11,6 +11,7 @@ import org.aslstd.api.bukkit.utils.ServerVersion;
 import org.aslstd.api.openlib.player.OPlayer;
 import org.aslstd.api.openlib.plugin.Incompatibility;
 import org.aslstd.api.openlib.plugin.OpenPlugin;
+import org.aslstd.api.openlib.plugin.hook.Hooks;
 import org.aslstd.api.openlib.plugin.hook.Placeholders;
 import org.aslstd.api.openlib.provider.permission.PermProvider;
 import org.aslstd.api.openlib.util.Obj;
@@ -80,8 +81,6 @@ public class OpenLib extends OpenPlugin {
 	@Getter private static SchedulerProvider scheduler = null;
 
 	@Override public void preInit() {
-		final NBTItem it = new NBTItem(new ItemStack(Material.IRON_INGOT, 1));
-		it.setBoolean("init", true);
 		init();
 	}
 
@@ -90,7 +89,10 @@ public class OpenLib extends OpenPlugin {
 	}
 
 	@Override
-	public void onLoad() {
+	public void preLoad() {
+		final NBTItem it = new NBTItem(new ItemStack(Material.IRON_INGOT, 1));
+		it.setBoolean("init", true);
+
 		instance = this;
 		workers = new WorkerService(Runtime.getRuntime().availableProcessors());
 
@@ -123,7 +125,7 @@ public class OpenLib extends OpenPlugin {
 
 		ServerVersion.init(Bukkit.getBukkitVersion(), Bukkit.getName());
 
-		if (Placeholders.enabled()) {
+		if (Hooks.placeholderapi()) {
 			Texts.fine("PAPI expansion loaded!");
 			new DataExpansion();
 		} else
@@ -140,7 +142,7 @@ public class OpenLib extends OpenPlugin {
 
 		if (plugins.size() > 0) {
 			Texts.fine("&a" + getName() + " found OpenPlugins, wait while all plugins enables.. ");
-			new LoadOpenPlugins(plugins).runTaskTimer(this, 0, 40L);
+			LoadOpenPlugins.execute(plugins);
 		} else {
 			Listeners.register();
 			CancelJoinBeforeFullLoading.unregister();
@@ -149,7 +151,7 @@ public class OpenLib extends OpenPlugin {
 		Texts.fine("&a" + getName() + " succesfuly loaded in " + Texts.format((System.nanoTime() - bef) / 1e9) + " sec.");
 		Texts.sendLB();
 		Incompatibility.check();
-		if (Placeholders.enabled() && !Placeholders.preRegister().isEmpty())
+		if (Hooks.placeholderapi() && !Placeholders.preRegister().isEmpty())
 			Placeholders.preRegister().values().forEach(PlaceholderExpansion::register);
 	}
 

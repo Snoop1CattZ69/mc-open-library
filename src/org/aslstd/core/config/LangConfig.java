@@ -1,6 +1,6 @@
 package org.aslstd.core.config;
 
-import org.aslstd.api.bukkit.yaml.OConf;
+import org.aslstd.api.bukkit.file.yaml.OConf;
 import org.aslstd.api.openlib.plugin.OpenPlugin;
 
 /**
