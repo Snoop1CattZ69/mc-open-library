@@ -24,7 +24,8 @@ public class UPlayer extends UEntity {
 	}
 
 	private void defaults() {
-		player.setHealthScaled(true);
+		if (player != null && player.isOnline())
+			player.setHealthScaled(true);
 	}
 
 	/** {@inheritDoc} */

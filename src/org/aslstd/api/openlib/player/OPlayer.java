@@ -25,7 +25,7 @@ public final class OPlayer extends UPlayer {
 
 	public OPlayer(UUID uid) {
 		super(Bukkit.getPlayer(uid));
-		dataFile = PlayerFileStorage.getDatabases().get(OpenLib.instance()).getPlayerFile(player);
+		dataFile = PlayerFileStorage.getDatabases().get(OpenLib.instance()).getPlayerFile(uid);
 		options = new Options(this);
 		equip = new EquipInventory();
 	}

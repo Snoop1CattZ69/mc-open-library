@@ -277,12 +277,12 @@ public class Texts {
 	class Dumper {
 		void dump(Settings<?> settings, JavaPlugin plugin) {
 			if (plugin == null)
-				for (final Map.Entry<String, ?> entry : settings.settings.entrySet())
+				for (final Map.Entry<String, ?> entry : settings.settings().entrySet())
 					Texts.warn(String.valueOf(entry.getKey()) + ": &a" + entry.getValue());
 			else {
 				final Yaml dump = new Yaml(new File(plugin.getDataFolder() + "/dump." + System.currentTimeMillis() + "." + settings.toString() + ".yml"));
 
-				for (final Entry<String,?> entry : settings.settings.entrySet())
+				for (final Entry<String,?> entry : settings.settings().entrySet())
 					if (entry.getKey() != null || !entry.getKey().equalsIgnoreCase(""))
 						dump.set(entry.getKey(), entry.getValue());
 			}

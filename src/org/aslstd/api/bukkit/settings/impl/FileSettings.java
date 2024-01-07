@@ -1,6 +1,8 @@
 package org.aslstd.api.bukkit.settings.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,6 +19,8 @@ import org.jetbrains.annotations.Nullable;
  */
 public class FileSettings extends Settings<String> {
 
+	private Set<String> arrays = new HashSet<>();
+
 	/**
 	 * <p>importArray.</p>
 	 *
@@ -25,7 +29,8 @@ public class FileSettings extends Settings<String> {
 	 */
 	public void importArray(@NotNull List<? extends Object> array, String key) {
 		for (int i = 0; i < array.size(); i++)
-			settings.put(String.valueOf(key.toLowerCase()) + "." + i, array.get(i).toString());
+			settings.put(String.valueOf(key.toLowerCase()) + "$" + i, array.get(i).toString());
+		arrays.add(key);
 	}
 
 	/**
@@ -34,8 +39,9 @@ public class FileSettings extends Settings<String> {
 	 * @param key a {@link String} object
 	 */
 	public void removeArray(@NotNull String key) {
-		for (int i = 0; hasKey(String.valueOf(key) + "." + i); i++)
-			remove(String.valueOf(key) + "." + i);
+		for (int i = 0; hasKey(String.valueOf(key) + "$" + i); i++)
+			remove(String.valueOf(key) + "$" + i);
+		arrays.remove(key);
 	}
 
 	/**
@@ -46,9 +52,16 @@ public class FileSettings extends Settings<String> {
 	 */
 	public List<String> exportArray(@NotNull String key) {
 		final List<String> keys = new ArrayList<>();
-		for (int i = 0 ; hasKey(String.valueOf(key) + "." + i); i++)
-			keys.add(settings.get(String.valueOf(key) + "." + i));
+		for (int i = 0 ; hasKey(String.valueOf(key) + "$" + i); i++)
+			keys.add(settings.get(String.valueOf(key) + "$" + i));
 		return keys;
+	}
+
+	public Map<String,List<String>> exportArrays() {
+		final Map<String,List<String>> arrays = new HashMap<>();
+		for (final String array : this.arrays)
+			arrays.put(array, exportArray(array));
+		return arrays;
 	}
 
 	public void importYaml(@NotNull Yaml file) {
@@ -115,9 +128,9 @@ public class FileSettings extends Settings<String> {
 				section = section + ".";
 
 		for (final Map.Entry<String, String> key : getKeys()) {
-			if (key.getKey().matches("^.*\\.[1-9]*"))
+			if (key.getKey().matches("^.*\\$[1-9]*"))
 				continue;
-			if (key.getKey().matches("^.*\\.0$")) {
+			if (key.getKey().matches("^.*\\$0$")) {
 				file.set(String.valueOf(section) + key.getKey().substring(0, key.getKey().length() - 2), exportArray(key.getKey().substring(0, key.getKey().length() - 2)));
 				continue;
 			}

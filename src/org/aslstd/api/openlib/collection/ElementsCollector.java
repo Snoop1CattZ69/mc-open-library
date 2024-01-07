@@ -5,6 +5,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -34,6 +36,7 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 	@Getter private Constructor<?> constructor;
 	private List<String> defaults;
 	private PrdConsumer<V> func;
+	private PrdConsumer<Collection<V>> finalize;
 	private JavaPlugin plugin;
 
 	protected ElementsCollector(ConcurrentMap<String, V> map, Class<V> clazz) {
@@ -91,6 +94,8 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 				}
 			}
 		}
+
+		finalize.accept(Collections.unmodifiableCollection(map.values()));
 	}
 
 	@SneakyThrows(IllegalStateException.class)
@@ -105,6 +110,13 @@ public class ElementsCollector<V> extends ForwardingMap<String, V> {
 	public ElementsCollector<V> executeForObject(PrdConsumer<V> func) {
 		if (this.map == null) throw new IllegalStateException("ElementsCollector not initialized, check issues above");
 		this.func = func;
+		return this;
+	}
+
+	@SneakyThrows(IllegalStateException.class)
+	public ElementsCollector<V> executeFinally(PrdConsumer<Collection<V>> func) {
+		if (this.map == null) throw new IllegalStateException("ElementsCollector not initialized, check issues above");
+		this.finalize = func;
 		return this;
 	}
 

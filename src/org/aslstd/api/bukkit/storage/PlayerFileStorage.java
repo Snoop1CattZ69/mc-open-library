@@ -76,4 +76,8 @@ public class PlayerFileStorage {
 		return database.get(player.getUniqueId());
 	}
 
+	public @NotNull Yaml getPlayerFile(@NotNull UUID uid) {
+		return database.get(uid);
+	}
+
 }

@@ -1,6 +1,7 @@
 package org.aslstd.api.openlib.player;
 
 import org.aslstd.api.bukkit.settings.Settings;
+import org.aslstd.api.bukkit.settings.impl.DataSettings;
 import org.aslstd.api.bukkit.settings.impl.FileSettings;
 import org.aslstd.api.bukkit.value.ValuePair;
 import org.jetbrains.annotations.NotNull;
@@ -12,7 +13,7 @@ import lombok.experimental.Accessors;
 public final class Options {
 
 	@Getter private Settings<Double> tempStore = new Settings<>();
-	@Getter private FileSettings tempData = new FileSettings();
+	@Getter private DataSettings tempData = new DataSettings();
 	@Getter private FileSettings data = new FileSettings();
 
 	private OPlayer player;
@@ -91,7 +92,7 @@ public final class Options {
 		return data.getValue(key);
 	}
 
-	public String readTemp(String key) {
+	public Object readTemp(String key) {
 		return tempData.getValue(key);
 	}
 
@@ -115,16 +116,16 @@ public final class Options {
 		return readBase(key) + (readScale(key) * readScaleMod());
 	}
 
-	public double readFRange(String key) {
+	public double readFirst(String key) {
 		return readValue(key + ".first");
 	}
 
-	public double readSRange(String key) {
+	public double readSecond(String key) {
 		return readValue(key + ".second");
 	}
 
 	public ValuePair<Double> readRange(String key) {
-		return ValuePair.of(readFRange(key), readSRange(key));
+		return ValuePair.of(readFirst(key), readSecond(key));
 	}
 
 	public String eraseDataKey(String key) {
@@ -135,7 +136,7 @@ public final class Options {
 		data.removeKey(section);
 	}
 
-	public String eraseTempKey(String key) {
+	public Object eraseTempKey(String key) {
 		return tempData.remove(key);
 	}
 

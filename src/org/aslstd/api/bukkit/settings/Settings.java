@@ -7,13 +7,17 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
 /**
  * <p>Settings class.</p>
  *
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
+@Accessors(fluent = true)
 public class Settings<T> {
-	public ConcurrentMap<String, T> settings = new ConcurrentHashMap<>();
+	@Getter protected ConcurrentMap<String, T> settings = new ConcurrentHashMap<>();
 
 	/**
 	 * <p>getSettingsSize.</p>
