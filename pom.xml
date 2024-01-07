@@ -61,11 +61,17 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.5.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<minimizeJar>false</minimizeJar>
 					<shadeSourcesContent>true</shadeSourcesContent>
-					<dependencyReducedPomLocation>
-						${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
 					<relocations>
 						<relocation>
 							<pattern>de.slikey</pattern>
@@ -97,19 +103,11 @@
 							<artifact>com.elmakers.mine.bukkit:EffectLib</artifact>
 							<excludes>
 								<exclude>plugin.yml</exclude>
-								<excludes>org/**</excludes>
+								<exclude>org/**</exclude>
 							</excludes>
 						</filter>
 					</filters>
 				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
@@ -177,12 +175,12 @@
 	<dependencies>
 
 		<!-- Compile Project: EffectLib -->
-        <dependency>
-            <groupId>com.elmakers.mine.bukkit</groupId>
-            <artifactId>EffectLib</artifactId>
-            <version>10.2-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+		<dependency>
+			<groupId>com.elmakers.mine.bukkit</groupId>
+			<artifactId>EffectLib</artifactId>
+			<version>10.2-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
 
 		<!-- Compile Project: BStats -->
 		<dependency>
@@ -314,10 +312,10 @@
 		</repository>
 
 		<!-- EffectLib -->
-        <repository>
-            <id>elMakers</id>
-            <url>https://maven.elmakers.com/repository/</url>
-        </repository>
+		<repository>
+			<id>elMakers</id>
+			<url>https://maven.elmakers.com/repository/</url>
+		</repository>
 
 		<!-- Item-NBT-API -->
 		<repository>
