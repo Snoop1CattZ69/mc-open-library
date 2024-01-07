@@ -3,8 +3,8 @@ package org.aslstd.api.bukkit.entity.pick;
 import java.util.List;
 
 import org.aslstd.api.bukkit.message.Texts;
-import org.aslstd.api.openlib.provider.permission.PermProvider;
 import org.aslstd.core.OpenLib;
+import org.aslstd.core.platform.permission.PermProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

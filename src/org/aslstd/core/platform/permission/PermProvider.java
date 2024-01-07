@@ -1,4 +1,4 @@
-package org.aslstd.api.openlib.provider.permission;
+package org.aslstd.core.platform.permission;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -6,6 +6,9 @@ import java.util.stream.Stream;
 import javax.annotation.Nonnull;
 
 import org.aslstd.api.openlib.util.Obj;
+import org.aslstd.core.platform.permission.provider.BukkitPermProvider;
+import org.aslstd.core.platform.permission.provider.LuckPermProvider;
+import org.aslstd.core.platform.permission.provider.VaultPermProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;

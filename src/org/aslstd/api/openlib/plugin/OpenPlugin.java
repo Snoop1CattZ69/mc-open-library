@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import org.aslstd.api.bukkit.file.yaml.OConf;
-import org.aslstd.api.bukkit.message.Texts;
-import org.bukkit.event.HandlerList;
+import org.aslstd.api.openlib.util.Obj;
+import org.aslstd.core.service.Listeners;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -53,7 +53,7 @@ public abstract class OpenPlugin extends JavaPlugin {
 	public void onDisable() {
 		super.onDisable();
 
-		HandlerList.unregisterAll(this);
+		Listeners.unregister(this);
 		disable();
 	}
 
@@ -96,12 +96,16 @@ public abstract class OpenPlugin extends JavaPlugin {
 	}
 	/**
 	 * <p>loadListener.</p>
-	 *
+	 * @deprecated use {@link Listeners} instead
 	 * @param listener a {@link org.bukkit.event.Listener} object
 	 */
 	@Deprecated
 	public void loadListener(Listener listener) {
 		getServer().getPluginManager().registerEvents(listener, this);
+	}
+
+	public void addListener(BukkitListener listener) {
+		Listeners.add(listener, this);
 	}
 
 	/**
@@ -110,7 +114,7 @@ public abstract class OpenPlugin extends JavaPlugin {
 	 * @param cfg a {@link OConf} object
 	 */
 	public void loadConfiguration(OConf cfg) {
-		if (cfg == null) Texts.debug("null configuration was providen, skipped");
+		Obj.checkNull("null configuration was providen, skipped", cfg);
 		if (!configurations.contains(cfg))
 			configurations.add(cfg);
 	}

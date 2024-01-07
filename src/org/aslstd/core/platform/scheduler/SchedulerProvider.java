@@ -1,4 +1,4 @@
-package org.aslstd.core.platform.scheduler.provider;
+package org.aslstd.core.platform.scheduler;
 
 import org.aslstd.core.platform.scheduler.task.Scheduled;
 import org.bukkit.Location;

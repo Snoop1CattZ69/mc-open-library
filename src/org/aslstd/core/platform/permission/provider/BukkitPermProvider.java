@@ -1,16 +1,16 @@
-package org.aslstd.api.openlib.provider.permission;
+package org.aslstd.core.platform.permission.provider;
 
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import org.aslstd.core.platform.permission.PermProvider;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BukkitPermProvider extends PermProvider {
-	BukkitPermProvider(JavaPlugin plugin) { super(plugin); }
-
+	public BukkitPermProvider(JavaPlugin plugin) { super(plugin); }
 
 	private static ConcurrentMap<UUID, PermissionAttachment> attachments = new ConcurrentHashMap<>();
 

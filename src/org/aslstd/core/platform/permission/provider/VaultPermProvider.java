@@ -1,5 +1,6 @@
-package org.aslstd.api.openlib.provider.permission;
+package org.aslstd.core.platform.permission.provider;
 
+import org.aslstd.core.platform.permission.PermProvider;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -9,7 +10,7 @@ public class VaultPermProvider extends PermProvider {
 
 	private static Permission perm;
 
-	VaultPermProvider(JavaPlugin plugin, Permission provider) {
+	public VaultPermProvider(JavaPlugin plugin, Permission provider) {
 		super(plugin);
 		perm = provider;
 	}

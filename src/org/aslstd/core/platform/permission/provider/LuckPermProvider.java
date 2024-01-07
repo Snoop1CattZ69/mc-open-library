@@ -1,5 +1,6 @@
-package org.aslstd.api.openlib.provider.permission;
+package org.aslstd.core.platform.permission.provider;
 
+import org.aslstd.core.platform.permission.PermProvider;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,7 +14,7 @@ public class LuckPermProvider extends PermProvider {
 
 	private static LuckPerms luck;
 
-	LuckPermProvider(JavaPlugin plugin, LuckPerms provider) {
+	public LuckPermProvider(JavaPlugin plugin, LuckPerms provider) {
 		super(plugin);
 		luck = provider;
 	}
