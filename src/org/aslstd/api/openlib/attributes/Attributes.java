@@ -8,44 +8,46 @@ public class Attributes {
 
 	public static final NamespacedKey
 
-	HEALTH_MAX 		= of("health-max"),
-	HEALTH_REGEN	= of("health-regeneration"),
-	HUNGER_MAX 		= of("hunger-max"),
+	HEALTH_MAX 		 = of("health-max"),
+	HEALTH_REGEN	 = of("health-regeneration"),
 
-	MANA_MAX		= of("mana-max"),
-	MANA_REGEN		= of("mana-regeneration"),
+	HUNGER_MAX 		 = of("hunger-max"),
+	HUNGER_REGEN_MOD = of("hunger-regen-modifier"),
 
-	MOVE_SPEED		= of("movement-speed"),
-	EXP_BONUS		= of("experience-bonus"),
+	MANA_MAX		 = of("mana-max"),
+	MANA_REGEN		 = of("mana-regeneration"),
 
-	FIST_DAMAGE 	= of("fist-damage"),
-	PHYS_DAMAGE 	= of("physical-damage"),
-	PROJ_DAMAGE 	= of("projectile-damage"),
-	MAGIC_DAMAGE 	= of("magic-damage"),
+	MOVE_SPEED		 = of("movement-speed"),
+	EXP_BONUS		 = of("experience-bonus"),
 
-	KNOCKBACK		= of("knockback"),
+	FIST_DAMAGE 	 = of("fist-damage"),
+	PHYS_DAMAGE 	 = of("physical-damage"),
+	PROJ_DAMAGE 	 = of("projectile-damage"),
+	MAGIC_DAMAGE 	 = of("magic-damage"),
 
-	PHYS_DEFENSE 	= of("physical-defense"),
-	PROJ_DEFENSE 	= of("projectile-defense"),
-	MAGIC_DEFENSE 	= of("magic-defense"),
+	KNOCKBACK		 = of("knockback"),
 
-	DODGE 			= of("dodge"),
-	BLOCK 			= of("shield-block"),
-	ABSORB			= of("absorbtion"),
-	LIFESTEAL 		= of("lifesteal"),
-	REFLECT			= of("reflection"),
+	PHYS_DEFENSE 	 = of("physical-defense"),
+	PROJ_DEFENSE 	 = of("projectile-defense"),
+	MAGIC_DEFENSE 	 = of("magic-defense"),
 
-	CRIT_CHANCE 	= of("critical-chance"),
-	CRIT_DAMAGE 	= of("critical-damage"),
-	MAG_CRIT_CHANCE = of("magic-critical-chance"),
-	MAG_CRIT_DAMAGE = of("magic-critical-damage"),
+	DODGE 			 = of("dodge"),
+	BLOCK 			 = of("shield-block"),
+	ABSORB			 = of("absorbtion"),
+	LIFESTEAL 		 = of("lifesteal"),
+	REFLECT			 = of("reflection"),
 
-	PVP_DMG_MOD 	= of("pvp-damage-modifier"),
-	PVP_DEF_MOD 	= of("pvp-defense-modifier"),
-	PVE_DMG_MOD 	= of("pve-damage-modifier"),
-	PVE_DEF_MOD 	= of("pve-defense-modifier"),
+	CRIT_CHANCE 	 = of("critical-chance"),
+	CRIT_DAMAGE 	 = of("critical-damage"),
+	MAG_CRIT_CHANCE  = of("magic-critical-chance"),
+	MAG_CRIT_DAMAGE  = of("magic-critical-damage"),
 
-	STUN			= of("stun"),
-	ROOTS			= of("roots");
+	PVP_DMG_MOD 	 = of("pvp-damage-modifier"),
+	PVP_DEF_MOD 	 = of("pvp-defense-modifier"),
+	PVE_DMG_MOD 	 = of("pve-damage-modifier"),
+	PVE_DEF_MOD 	 = of("pve-defense-modifier"),
+
+	STUN			 = of("stun"),
+	ROOTS			 = of("roots");
 
 }

@@ -7,11 +7,11 @@ import org.bukkit.event.HandlerList;
 import lombok.Getter;
 
 /**
- * <p>EPlayerRegisteredEvent class.</p>
+ * <p>OPlayerRegisteredEvent class.</p>
  *
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
-public final class EPlayerRegisteredEvent extends Event {
+public final class OPlayerRegisteredEvent extends Event {
 
 	private static final HandlerList HANDLERS = new HandlerList();
 
@@ -23,11 +23,11 @@ public final class EPlayerRegisteredEvent extends Event {
 	@Getter private OPlayer player;
 
 	/**
-	 * <p>Constructor for EPlayerRegisteredEvent.</p>
+	 * <p>Constructor for OPlayerRegisteredEvent.</p>
 	 *
 	 * @param who a {@link OPlayer.aslstd.api.openlib.entity.EPlayer} object
 	 */
-	public EPlayerRegisteredEvent(OPlayer who) {
+	public OPlayerRegisteredEvent(OPlayer who) {
 		player = who;
 	}
 

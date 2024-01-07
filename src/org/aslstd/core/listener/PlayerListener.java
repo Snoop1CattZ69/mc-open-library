@@ -5,6 +5,7 @@ import org.aslstd.api.bukkit.equip.EquipSlot;
 import org.aslstd.api.bukkit.location.Vec3;
 import org.aslstd.api.openlib.event.equipment.PrepareEquipEvent;
 import org.aslstd.api.openlib.event.player.PlayerBlockMoveEvent;
+import org.aslstd.api.openlib.event.register.OPlayerRegisteredEvent;
 import org.aslstd.api.openlib.player.OPlayer;
 import org.aslstd.api.openlib.plugin.BukkitListener;
 import org.aslstd.api.openlib.plugin.Named;
@@ -31,7 +32,7 @@ public class PlayerListener implements BukkitListener {
 	 * @param e a {@link org.bukkit.event.player.PlayerJoinEvent} object
 	 */
 	@EventHandler
-	public void registerEPlayer(PlayerJoinEvent e) {
+	public void registerOPlayer(PlayerJoinEvent e) {
 		OpenLib.scheduler().schedule(OpenLib.instance(), e.getPlayer(), () -> {
 			final OPlayer p = Pick.of(e.getPlayer());
 
@@ -45,6 +46,8 @@ public class PlayerListener implements BukkitListener {
 				if (!p.options().checkData(data[0]))
 					p.options().writeData(data[0], data[1]);
 			}
+
+			Bukkit.getServer().getPluginManager().callEvent(new OPlayerRegisteredEvent(p));
 		});
 
 		if (e.getPlayer().isOp() || e.getPlayer().hasPermission("*"))
@@ -57,7 +60,7 @@ public class PlayerListener implements BukkitListener {
 	 * @param e a {@link org.bukkit.event.player.PlayerQuitEvent} object
 	 */
 	@EventHandler
-	public void unregisterEPlayer(PlayerQuitEvent e) {
+	public void unregisterOPlayer(PlayerQuitEvent e) {
 		OPlayer.stash().remove(e.getPlayer().getUniqueId());
 	}
 
