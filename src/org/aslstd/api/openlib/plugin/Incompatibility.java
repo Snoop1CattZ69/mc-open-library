@@ -8,15 +8,18 @@ import org.aslstd.api.bukkit.message.Texts;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * <p>Incompatibility class.</p>
  *
  * @author Snoop1CattZ69 > Visit <a href="https://github.com/Snoop1CattZ69">Github</a>, <a href="https://www.spigotmc.org/resources/authors/115181/">Spigot</a>
  */
 @SuppressWarnings("serial")
+@UtilityClass
 public class Incompatibility {
 
-	private static final Map<String, String> pluginsIncompat = new HashMap<String, String>() {{
+	private final Map<String, String> pluginsIncompat = new HashMap<>() {{
 		put("ExecutableItems", "ElephantItems");
 		put("ExecutableBlocks", "ElephantItems");
 	}};
@@ -24,7 +27,7 @@ public class Incompatibility {
 	/**
 	 * <p>check.</p>
 	 */
-	public static void check() {
+	public void check() {
 		Plugin source, target;
 		boolean f = false;
 
